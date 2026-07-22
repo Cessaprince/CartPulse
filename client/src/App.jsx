@@ -1,13 +1,17 @@
 import Home from './pages/Home'
 import React from 'react'
-import { BrowserRouter, Link, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Routes, Route } from 'react-router-dom'
+import Shop from './pages/Shop'
 
 const App = () => {
   return (
 
     <div>
       <BrowserRouter>
-        <Home />
+        <Routes>
+          <Route index element={<Home />}/>
+          <Route path="/shop" element={<Shop />} />
+        </Routes>
       </BrowserRouter>
 
     </div>

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Nav = () => {
   return (
-    <div>
+    <div className=''>
       <section className='bg-[var(--navyblue-grayish)] py-[15px]'>
 
         {/* the short container */}
@@ -65,7 +65,7 @@ const Nav = () => {
 
       </section>
 
-      <section className="bg-[var(--navyblue)] pt-[35px] pb-[15px] h-auto">
+      <section className="w-full bg-[var(--navyblue)] pt-[35px] pb-[15px] h-auto">
         <div className="container">
           <div className="flex justify-between items-center gap-[20px]">
             {/* CartPulse logo */}
@@ -98,11 +98,11 @@ const Nav = () => {
           <nav className='mx-auto mt-5 max-w-[550px] flex flex-col'>
 
             <div className="w-full flex items-center justify-between py-2">
-              <Link className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
+              <Link to='/' className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
                 home
               </Link>
 
-              <Link className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
+              <Link to='/shop' className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
                 products
               </Link>
 
@@ -135,274 +135,262 @@ const Nav = () => {
 
         </div>
       </section>
-
       {/* Dropdown content when hovering categories */}
-      <div className='hidden bg-[var(--navyblue)] mx-auto max-w-[600px] grid grid-cols-3 gap-[35px] pt-[30px] pb-[50px] px-[30px]'>
 
-        {/* 1*/}
-        <div className='flex flex-col gap-[5px] text-xs'>
-          <h3 className='text-white font-bold py-[15px] border-b-[0.1px] border-white'>Products by category</h3>
+      <section className="hidden bg-[var(--navyblue)]">
+        <div className="container">
+          <div className='w-full grid grid-cols-3 gap-[35px] pt-[30px] pb-[50px] px-[30px]'>
 
-          {/* categories 1*/}
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+            {/* 1*/}
+            <div className='flex flex-col gap-[5px] text-xs'>
+              <h3 className='text-white font-bold py-[15px] border-b-[0.1px] border-white'>Products by category</h3>
 
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+              {/* categories 1*/}
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
 
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
+
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
+
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
+
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
             </div>
 
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+            {/* 2*/}
+            <div className='flex flex-col gap-[5px] text-xs'>
+              <h3 className='text-white font-bold py-[15px] border-b-[0.1px] border-white'>Products by category</h3>
 
-          </Link>
+              {/* categories 3*/}
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
 
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
 
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
 
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
+
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
+
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
+
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
+
             </div>
 
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+            {/* 3*/}
+            <div className='flex flex-col gap-[5px] text-xs'>
+              <h3 className='text-white font-bold py-[15px] border-b-[0.1px] border-white'>Products by category</h3>
 
-          </Link>
+              {/* products 3*/}
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
 
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
 
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
 
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
+
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
+
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
+              <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                <div className='flex items-center gap-[5px]'>
+                  <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                  <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                    fashion
+                  </span>
+                </div>
+
+                <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+              </Link>
+
             </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
+          </div>
         </div>
+      </section>
 
-        {/* 2*/}
-        <div className='flex flex-col gap-[5px] text-xs'>
-          <h3 className='text-white font-bold py-[15px] border-b-[0.1px] border-white'>Products by category</h3>
-
-          {/* categories 3*/}
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
-            </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
-            </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
-            </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
-            </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
-            </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
-        </div>
-
-        {/* 3*/}
-        <div className='flex flex-col gap-[5px] text-xs'>
-          <h3 className='text-white font-bold py-[15px] border-b-[0.1px] border-white'>Products by category</h3>
-
-          {/* products 3*/}
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
-            </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
-            </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
-            </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
-            </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
-          <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-            <div className='flex items-center gap-[5px]'>
-              <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-              <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                fashion
-              </span>
-            </div>
-
-            <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-          </Link>
-
-        </div>
-      </div>
 
       {/* Dropdown content when hovering Join Us*/}
-      <div className=' hidden bg-[var(--navyblue)] mx-auto max-w-[600px] flex flex-col gap-[10px] pt-[30px] pb-[50px] px-[30px] text-sm'>
-        <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
 
-          <div className='flex items-center gap-[5px]'>
-            <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+      <section className="hidden bg-[var(--navyblue)]">
+        <div className="container flex justify-center">
+          <div className='w-[50%] flex flex-col gap-[10px] pt-[30px] pb-[50px] px-[30px] text-sm'>
+            <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
 
-            <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-              login
-            </span>
+              <div className='flex items-center gap-[5px]'>
+                <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                  login
+                </span>
+              </div>
+
+              <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+            </Link>
+            <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+              <div className='flex items-center gap-[5px]'>
+                <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                  signup
+                </span>
+              </div>
+
+              <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+            </Link>
           </div>
+        </div>
+      </section>
 
-          <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-        </Link>
-        <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-          <div className='flex items-center gap-[5px]'>
-            <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-            <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-              signup
-            </span>
-          </div>
-
-          <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-        </Link>
-      </div>
 
       {/* Dropdown content when hovering Join Us as account*/}
+      <section className="hidden bg-[var(--navyblue)]">
+        <div className="container flex justify-center">
+          <div className='w-[50%] flex flex-col gap-[10px] pt-[30px] pb-[50px] px-[30px] text-sm'>
+            <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
 
-      <div className='hidden bg-[var(--navyblue)] mx-auto max-w-[600px] flex flex-col gap-[10px] pt-[30px] pb-[50px] px-[30px] text-sm'>
-        <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+              <div className='flex items-center gap-[5px]'>
+                <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
 
-          <div className='flex items-center gap-[5px]'>
-            <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+                <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                  cart
+                </span>
+              </div>
 
-            <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-              cart
-            </span>
+              <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+            </Link>
+            <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+              <div className='flex items-center gap-[5px]'>
+                <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
+
+                <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                  logout
+                </span>
+              </div>
+
+              <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
+
+            </Link>
           </div>
+        </div>
+      </section>
 
-          <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-        </Link>
-        <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
-          <div className='flex items-center gap-[5px]'>
-            <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-            <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-              logout
-            </span>
-          </div>
-
-          <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
-        </Link>
-      </div>
 
 
     </div>
