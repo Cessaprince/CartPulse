@@ -111,7 +111,7 @@ const Nav = () => {
                 <ChevronDown size={16} />
               </Link>
 
-              <Link className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
+              <Link to='/contact-us' className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
                 contact
               </Link>
 
