@@ -2,14 +2,14 @@ import React from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Mail, Phone, PhoneCall, Van } from 'lucide-react'
+import { Mail, Phone, PhoneCall, Van, ChevronRight } from 'lucide-react'
 
 const Contact = () => {
     return (
         <div>
             <Nav />
 
-            <section className='py-[50px]'>
+            <section className='py-[50px] bg-gradient-to-b from-white from-50% to-gray-50 to-50%'>
                 <div className="container">
                     <div className="w-full flex">
                         <div className="flex flex-col mx-auto items-center py-[50px]">
@@ -18,7 +18,7 @@ const Contact = () => {
 
                             {/* the form*/}
 
-                            <form action="" className='my-[50px] border-[0.1px] border-gray-200 rounded-[20px] w-[600px] h-auto shadow-lg px-[40px] py-[60px] flex flex-col gap-[30px] items-center'>
+                            <form action="" className='my-[50px] border-[0.1px] border-gray-200 rounded-[20px] w-[600px] h-auto shadow-lg px-[40px] py-[60px] flex flex-col gap-[30px] items-center bg-white'>
 
                                 {/* form controls*/}
                                 <div className="flex items-center w-full gap-[30px]">
@@ -123,8 +123,119 @@ const Contact = () => {
                 </div>
             </section>
 
-            <section className="py-[30px]">
-                <div className="container">
+            <section className="py-[120px]">
+                <div className="container flex flex-col gap-[50px]">
+                    <div className='mx-auto flex flex-col items-center gap-[15px]'>
+                        <h3 className='capitalize text-[36px]'>frequently asked questions</h3>
+                        <span className='font-thin text-gray-500 text-[16px] w-[60%] text-center'>
+                            Cras tincidunt lobortis feugiat vivamus at morbi leo urna molestie atole elementum eu facilisis faucibus interdum posuere.
+                        </span>
+                    </div>
+
+                    {/* the frequently asked questions*/}
+                    <div className="grid grid-cols-2 gap-[30px] items-center">
+
+                        {/*each question*/}
+
+                        {/* question1*/}
+                        <div className="cursor-pointer flex flex-col items-center gap-[10px] shadow-xs border-[0.1px] rounded-[10px] p-[30px] border-gray-200 transition-all duration-300 ease hover:scale-99">
+                            <div className="flex w-full justify-between items-center gap-[30px]">
+                                <p className='font-semibold text-[18px]'>Do you offer international shipping?</p>
+                                <ChevronRight size={30} />
+                            </div>
+
+                            {/* text to display when the chevronRight will change to chevron down */}
+
+                            <div className='hidden w-full'>
+                                <p className='font-light text-gray-500 text-[16px] w-full leading-[25px] break-words whitespace-normal'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas orci netus feugiat ut egestas ut.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* question2*/}
+                        <div className="cursor-pointer flex flex-col items-center gap-[10px] shadow-xs border-[0.1px] rounded-[10px] p-[30px] border-gray-200 transition-all duration-300 ease hover:scale-99">
+                            <div className="flex w-full justify-between items-center gap-[30px]">
+                                <p className='font-semibold text-[18px]'>Do you offer international shipping?</p>
+                                <ChevronRight size={30} />
+                            </div>
+
+                            {/* text to display when the chevronRight will change to chevron down */}
+
+                            <div className='hidden w-full'>
+                                <p className='font-light text-gray-500 text-[16px] w-full leading-[25px] break-words whitespace-normal'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas orci netus feugiat ut egestas ut.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* question3*/}
+                        <div className="cursor-pointer flex flex-col items-center gap-[10px] shadow-xs border-[0.1px] rounded-[10px] p-[30px] border-gray-200 transition-all duration-300 ease hover:scale-99">
+                            <div className="flex w-full justify-between items-center gap-[30px]">
+                                <p className='font-semibold text-[18px]'>Do you offer international shipping?</p>
+                                <ChevronRight size={30} />
+                            </div>
+
+                            {/* text to display when the chevronRight will change to chevron down */}
+
+                            <div className='hidden w-full'>
+                                <p className='font-light text-gray-500 text-[16px] w-full leading-[25px] break-words whitespace-normal'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas orci netus feugiat ut egestas ut.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* question4*/}
+                        <div className="cursor-pointer flex flex-col items-center gap-[10px] shadow-xs border-[0.1px] rounded-[10px] p-[30px] border-gray-200 transition-all duration-300 ease hover:scale-99">
+                            <div className="flex w-full justify-between items-center gap-[30px]">
+                                <p className='font-semibold text-[18px]'>Do you offer international shipping?</p>
+                                <ChevronRight size={30} />
+                            </div>
+
+                            {/* text to display when the chevronRight will change to chevron down */}
+
+                            <div className='hidden w-full'>
+                                <p className='font-light text-gray-500 text-[16px] w-full leading-[25px] break-words whitespace-normal'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas orci netus feugiat ut egestas ut.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* question5*/}
+                        <div className="cursor-pointer flex flex-col items-center gap-[10px] shadow-xs border-[0.1px] rounded-[10px] p-[30px] border-gray-200 transition-all duration-300 ease hover:scale-99">
+                            <div className="flex w-full justify-between items-center gap-[30px]">
+                                <p className='font-semibold text-[18px]'>Do you offer international shipping?</p>
+                                <ChevronRight size={30} />
+                            </div>
+
+                            {/* text to display when the chevronRight will change to chevron down */}
+
+                            <div className='hidden w-full'>
+                                <p className='font-light text-gray-500 text-[16px] w-full leading-[25px] break-words whitespace-normal'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas orci netus feugiat ut egestas ut.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* question6*/}
+                        <div className="cursor-pointer flex flex-col items-center gap-[10px] shadow-xs border-[0.1px] rounded-[10px] p-[30px] border-gray-200 transition-all duration-300 ease hover:scale-99">
+                            <div className="flex w-full justify-between items-center gap-[30px]">
+                                <p className='font-semibold text-[18px]'>Do you offer international shipping?</p>
+                                <ChevronRight size={30} />
+                            </div>
+
+                            {/* text to display when the chevronRight will change to chevron down */}
+
+                            <div className='hidden w-full'>
+                                <p className='font-light text-gray-500 text-[16px] w-full leading-[25px] break-words whitespace-normal'>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit id venenatis pretium risus euismod dictum egestas orci netus feugiat ut egestas ut.
+                                </p>
+                            </div>
+                        </div>
+
+
+                    </div>
+
 
                 </div>
             </section>

@@ -115,7 +115,7 @@ const Nav = () => {
                 contact
               </Link>
 
-              <Link className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
+              <Link to='/blog' className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
                 blog
               </Link>
 
