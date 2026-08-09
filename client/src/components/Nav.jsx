@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Phone, Mail, ShoppingBag, Search, Handbag, ChevronDown, ChevronRight, Shirt } from 'lucide-react';
+import { Phone, Mail, ShoppingBag, Search, Handbag, ChevronDown, ChevronRight, Shirt, Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 
@@ -8,7 +8,9 @@ import { Link } from 'react-router-dom';
 const Nav = () => {
   return (
     <div className=''>
-      <section className='bg-[var(--navyblue-grayish)] py-[15px]'>
+
+      {/* top page description*/}
+      <section className='bg-[var(--navyblue-grayish)] py-[15px] max-md:hidden'>
 
         {/* the short container */}
         <div className="container">
@@ -65,17 +67,18 @@ const Nav = () => {
 
       </section>
 
+      {/* main nav bar with logo*/}
       <section className="w-full bg-[var(--navyblue)] pt-[35px] pb-[15px] h-auto">
         <div className="container">
-          <div className="flex justify-between items-center gap-[20px]">
+          <div className="max-md:flex-wrap flex justify-between items-center gap-[20px]">
             {/* CartPulse logo */}
-            <div className='flex gap-[5px] items-center'>
+            <div className='max-md:order-1 flex gap-[5px] items-center'>
               <ShoppingBag className='text-[var(--royalblue)]' />
               <span className='text-white text-[22px] font-semi-bold'>CartPulse</span>
             </div>
 
             {/* search bar */}
-            <form className='flex justify-between items-center px-[5px] py-[9px] bg-[var(--white)] rounded-[25px] border-[1px] hover:border-[var(--royalblue)] w-[500px]'>
+            <form className='max-md:order-3 max-md:w-full flex justify-between items-center px-[5px] py-[9px] bg-[var(--white)] rounded-[25px] border-[1px] hover:border-[var(--royalblue)] w-[500px]'>
               <input type="search" name="" id="" placeholder='Search...' className='[&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none outline-none text-xs text-gray-600 w-[80%] px-[15px]' />
               <button type='submit' className='rounded-full bg-[var(--royalblue)] flex items-center justify-center h-[30px] w-[30px] p-[2px] transition-transform duration-300 ease-in-out hover:scale-95 hover:bg-[var(--royalblue-hover)] hover:cursor-pointer'>
                 <Search size={[15]} className='text-[var(--white)]' />
@@ -83,19 +86,27 @@ const Nav = () => {
             </form>
 
             {/* Cart Link */}
-            <Link className='flex items-center gap-[7px] group'>
-              <span className="h-[25px] w-[25px] rounded-full bg-[var(--royalblue)] p-[5px] flex items-center justify-center text-[var(--white)] group-hover:text-gray-200 group-hover:bg-[var(--royalblue-hover)]">1</span>
-              <Handbag className='text-[var(--white)] group-hover:text-gray-200' size={[40]} />
-              <div className='flex flex-col ml-[4px]'>
-                <span className="text-[var(--white)] group-hover:text-gray-200 font-light text-sm">Your Cart</span>
-                <span className="text-[var(--white)] group-hover:text-gray-200 font-bold text-sm">$ 39.99 USD</span>
-              </div>
-            </Link>
+            <div className="max-md:order-2 flex gap-[7px] items-center">
+              <Link className=' flex items-center gap-[7px] group'>
+                <span className="h-[25px] w-[25px] rounded-full bg-[var(--royalblue)] p-[5px] flex items-center justify-center text-[var(--white)] group-hover:text-gray-200 group-hover:bg-[var(--royalblue-hover)]">1</span>
+                <Handbag className='text-[var(--white)] group-hover:text-gray-200 h-10 w-10 max-md:h-7 max-md:w-7' />
+                <div className='max-md:hidden flex flex-col ml-[4px]'>
+                  <span className="text-[var(--white)] group-hover:text-gray-200 font-light text-sm">Your Cart</span>
+                  <span className="text-[var(--white)] group-hover:text-gray-200 font-bold text-sm">$ 39.99 USD</span>
+                </div>
+              </Link>
+
+{/* menu when in mobile or ipad view*/}
+              <span className='lg:hidden flex justify-center items-center h-[40px] w-[40px] p-[3px] rounded-full bg-[var(--royalblue)]'>
+                <Menu className='font-bold text-white h-5 w-5' />
+              </span>
+            </div>
+
 
           </div>
 
           {/* nav */}
-          <nav className='mx-auto mt-5 max-w-[550px] flex flex-col'>
+          <nav className='max-md:hidden mx-auto mt-5 max-w-[550px] flex flex-col'>
 
             <div className="w-full flex items-center justify-between py-2">
               <Link to='/' className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
@@ -135,6 +146,7 @@ const Nav = () => {
 
         </div>
       </section>
+
       {/* Dropdown content when hovering categories */}
 
       <section className="hidden bg-[var(--navyblue)]">

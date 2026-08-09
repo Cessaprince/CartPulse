@@ -18,52 +18,52 @@ const Blog = () => {
             <Nav />
 
             {/*blog body*/}
-            <section className='pt-[50px] pb-[150px] bg-gray-50'>
+            <section className='pt-[50px] pb-[150px] max-md:pb-[100px] bg-gray-50'>
 
                 <div className="container">
 
-                    <div className="w-full flex justify-between items-center py-[30px]">
-                        <h3 className='capitalize text-[45px]'>our blog</h3>
+                    <div className="w-full flex justify-between items-center py-[30px] max-md:flex-col max-md:gap-[10px]">
+                        <h3 className='capitalize text-[45px] max-md:text-[30px]'>our blog</h3>
 
                         {/* search button */}
-                        <form action="" className='flex justify-between items-center w-[40%] group py-[12px] px-[25px] border-[0.1px] border-gray-300 shadow-md rounded-[45px] hover:border-black transition-all duration-300 ease'>
+                        <form action="" className='flex justify-between items-center w-[40%] max-md:w-full group py-[12px] max-md:py-[7px] px-[25px] border-[0.1px] border-gray-300 shadow-md rounded-[45px] hover:border-black transition-all duration-300 ease'>
                             <div className="flex gap-[10px] items-center">
                                 <SearchIcon className='text-gray-500' />
                                 <input placeholder='Search on blog...' type="search" name="" id="" className='text-gray-600 text-sm [&::-webkit-search-cancel-button]:appearance-none outline-none w-full ' />
                             </div>
 
                             <div className="">
-                                <button type='submit' className='py-[12px] px-[20px] text-white text-sm font-bold bg-[var(--royalblue)] rounded-[25px] transition-all duration-300 ease-in-out cursor-pointer hover:-translate-y-1 hover:bg-[var(--royalblue-hover)]'>Search</button>
+                                <button type='submit' className='py-[12px] max-md:py-[10px] px-[20px] text-white text-sm font-bold bg-[var(--royalblue)] rounded-[25px] transition-all duration-300 ease-in-out cursor-pointer hover:-translate-y-1 hover:bg-[var(--royalblue-hover)]'>Search</button>
                             </div>
                         </form>
 
                     </div>
 
                     {/* cloth area*/}
-                    <div className="w-full flex items-center gap-[40px] relative py-[30px]">
+                    <div className="w-full flex items-center gap-[40px] relative py-[30px] max-md:flex-col max-md:gap-[100px]">
                         {/* left side */}
 
-                        <div className="flex flex-col w-[50%] relative group cursor-pointer ">
+                        <div className="flex flex-col w-[50%] relative group cursor-pointer max-md:w-full">
                             <div className='relative h-[550px] overflow-hidden rounded-[15px] '>
                                 <img src={blogCloth} alt="" className='w-full h-full object-cover group-hover:scale-105 transition duration-300 ease' />
                             </div>
 
-                            <div className="absolute bottom-[-70px] shadow-sm left-[50px] bg-white border-[0.1px] border-gray-200 flex flex-col gap-[7px] p-[35px] w-[85%] h-auto rounded-[15px] group-hover:-translate-y-2 transition duration-300 ease-in-out">
-                                <div className='inline-flex justify-between w-[30%] capitalize text-gray-400 font-light text-[15px]'>
+                            <div className="absolute bottom-[-70px] shadow-sm left-[50px] max-md:left-1/2 max-md:-translate-x-1/2 bg-white border-[0.1px] border-gray-200 flex flex-col gap-[7px] p-[35px] w-[85%] h-auto rounded-[15px] group-hover:-translate-y-2 transition duration-300 ease-in-out">
+                                <div className='inline-flex justify-between w-[30%] max-md:w-[60%] capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>
                                     <span>tips</span>
                                     <span>—</span>
                                     <span>aug 16, 2022</span>
                                 </div>
-                                <Link to='//' className='text-[22px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>How to choose the perfect sweater for this fall 2022</Link>
+                                <Link to='//' className='text-[22px] max-md:text-[18px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>How to choose the perfect sweater for this fall 2022</Link>
 
-                                <span className="text-gray-500 leading-[25px]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque quis libero aut consequuntur,</span>
+                                <span className="text-gray-500 leading-[25px] max-md:text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque quis libero aut consequuntur,</span>
                             </div>
                         </div>
 
 
                         {/* right side */}
 
-                        <div className="flex-1 flex flex-col gap-[20px]">
+                        <div className="flex-1 flex flex-col gap-[20px] max-md:w-full">
 
                             {/* each image*/}
 
@@ -74,12 +74,12 @@ const Blog = () => {
                                 </div>
 
                                 <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                    <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px]'>
+                                    <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>
                                         <span>tips</span>
                                         <span>—</span>
                                         <span>aug 16, 2022</span>
                                     </div>
-                                    <Link to='//' className='text-[22px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                    <Link to='//' className='text-[22px] max-md:text-[18px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                 </div>
                             </div>
 
@@ -90,12 +90,12 @@ const Blog = () => {
                                 </div>
 
                                 <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                    <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px]'>
+                                    <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>
                                         <span>tips</span>
                                         <span>—</span>
                                         <span>aug 16, 2022</span>
                                     </div>
-                                    <Link to='//' className='text-[22px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                    <Link to='//' className='text-[22px] max-md:text-[18px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                 </div>
                             </div>
 
@@ -106,12 +106,12 @@ const Blog = () => {
                                 </div>
 
                                 <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                    <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px]'>
+                                    <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>
                                         <span>tips</span>
                                         <span>—</span>
                                         <span>aug 16, 2022</span>
                                     </div>
-                                    <Link to='//' className='text-[22px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                    <Link to='//' className='text-[22px] max-md:text-[18px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                 </div>
                             </div>
 
@@ -123,13 +123,13 @@ const Blog = () => {
             </section>
 
 
-            <section className='py-[100px]'>
+            <section className='py-[100px] max-md:py-[30px]'>
                 <div className="container border-b-[0.1px] border-gray-200 py-[100px]">
 
-                    <div className="w-full flex gap-[150px] items-stretch">
+                    <div className="w-full flex gap-[150px] items-stretch max-md:flex-col">
                         {/* left */}
-                        <div className="flex flex-col gap-[30px] w-[50%]">
-                            <h3 className='capitalize text-[30px]'>latest post</h3>
+                        <div className="flex flex-col gap-[30px] w-[50%] max-md:w-full">
+                            <h3 className='capitalize text-[30px] max-md:text-[24px]'>latest post</h3>
 
                             <div className="flex flex-col gap-[30px]">
                                 {/* image1*/}
@@ -139,12 +139,12 @@ const Blog = () => {
                                     </div>
 
                                     <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                        <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px]'>
+                                        <div className='inline-flex justify-between w-[50%] max-md:w-[60%] capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>
                                             <span>tips</span>
                                             <span>—</span>
                                             <span>aug 16, 2022</span>
                                         </div>
-                                        <Link to='//' className='text-[22px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                        <Link to='//' className='text-[22px] max-md:text-[18px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                     </div>
                                 </div>
 
@@ -155,12 +155,12 @@ const Blog = () => {
                                     </div>
 
                                     <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                        <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px]'>
+                                        <div className='inline-flex justify-between w-[50%] max-md:w-[60%] capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>
                                             <span>tips</span>
                                             <span>—</span>
                                             <span>aug 16, 2022</span>
                                         </div>
-                                        <Link to='//' className='text-[22px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                        <Link to='//' className='text-[22px] max-md:text-[18px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                     </div>
                                 </div>
 
@@ -171,12 +171,12 @@ const Blog = () => {
                                     </div>
 
                                     <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                        <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px]'>
+                                        <div className='inline-flex justify-between w-[50%] max-md:w-[60%] capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>
                                             <span>tips</span>
                                             <span>—</span>
                                             <span>aug 16, 2022</span>
                                         </div>
-                                        <Link to='//' className='text-[22px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                        <Link to='//' className='text-[22px] max-md:text-[18px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                     </div>
                                 </div>
 
@@ -187,12 +187,12 @@ const Blog = () => {
                                     </div>
 
                                     <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                        <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px]'>
+                                        <div className='inline-flex justify-between w-[50%] max-md:w-[60%] capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>
                                             <span>tips</span>
                                             <span>—</span>
                                             <span>aug 16, 2022</span>
                                         </div>
-                                        <Link to='//' className='text-[22px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                        <Link to='//' className='text-[22px] max-md:text-[18px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                     </div>
                                 </div>
 
@@ -203,12 +203,12 @@ const Blog = () => {
                                     </div>
 
                                     <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                        <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px]'>
+                                        <div className='inline-flex justify-between w-[50%] max-md:w-[60%] capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>
                                             <span>tips</span>
                                             <span>—</span>
                                             <span>aug 16, 2022</span>
                                         </div>
-                                        <Link to='//' className='text-[22px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                        <Link to='//' className='text-[22px] max-md:text-[18px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                     </div>
                                 </div>
 
@@ -219,12 +219,12 @@ const Blog = () => {
                                     </div>
 
                                     <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                        <div className='inline-flex justify-between w-[50%] capitalize text-gray-400 font-light text-[15px]'>
+                                        <div className='inline-flex justify-between w-[50%] max-md:w-[60%] capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>
                                             <span>tips</span>
                                             <span>—</span>
                                             <span>aug 16, 2022</span>
                                         </div>
-                                        <Link to='//' className='text-[22px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                        <Link to='//' className='text-[22px] max-md:text-[18px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                     </div>
                                 </div>
                             </div>
@@ -273,9 +273,9 @@ const Blog = () => {
                                     </div>
 
                                     <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                        <span className='capitalize text-gray-400 font-light text-[15px]'>aug 16, 2022</span>
+                                        <span className='capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>aug 16, 2022</span>
 
-                                        <Link to='//' className='text-[16px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                        <Link to='//' className='text-[16px] max-md:text-[14px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                     </div>
                                 </div>
 
@@ -286,9 +286,9 @@ const Blog = () => {
                                     </div>
 
                                     <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                        <span className='capitalize text-gray-400 font-light text-[15px]'>aug 16, 2022</span>
+                                        <span className='capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>aug 16, 2022</span>
 
-                                        <Link to='//' className='text-[16px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                        <Link to='//' className='text-[16px] max-md:text-[14px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                     </div>
                                 </div>
 
@@ -299,9 +299,9 @@ const Blog = () => {
                                     </div>
 
                                     <div className="flex flex-col gap-[7px] h-auto rounded-[15px] transition duration-300 ease-in-out">
-                                        <span className='capitalize text-gray-400 font-light text-[15px]'>aug 16, 2022</span>
+                                        <span className='capitalize text-gray-400 font-light text-[15px] max-md:text-[13px]'>aug 16, 2022</span>
 
-                                        <Link to='//' className='text-[16px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
+                                        <Link to='//' className='text-[16px] max-md:text-[14px] text-black group-hover:text-[var(--royalblue)] transition duration-300 ease'>Stylish furniture to redecor your bedroom on a budget</Link>
                                     </div>
                                 </div>
                             </div>

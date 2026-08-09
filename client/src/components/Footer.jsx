@@ -9,9 +9,10 @@ import mastercard from '../images/page-images/mastercard.png'
 const Footer = () => {
     return (
         <div>
-            <section className='bg-[var(--navyblue-grayish)] py-[15px]'>
+<section className='bg-[var(--navyblue-grayish)] py-[15px]'>
                 <div className="container">
-                    <div className="flex justify-between items-center gap-[30px] text-[var(--white)] py-[50px] border-b-[0.1px] border-gray-500">
+
+                    <div className="flex max-md:flex-wrap justify-between items-center gap-[30px] text-[var(--white)] py-[50px] border-b-[0.1px] border-gray-500">
                         <div className="flex flex-col gap-[30px]">
                             <h3 className='font-bold text-sm capitalize'>quick links</h3>
                             <div className="flex flex-col gap-[15px]">
@@ -94,35 +95,38 @@ const Footer = () => {
 
                         </div>
 
-                        <div className='flex flex-col gap-[10px] w-[400px] bg-[var(--blackgray)] h-auto p-[40px] rounded-[25px]'>
-                            <h3 className='font-bold text-sm capitalize'>get 10% OFF of your first purchase</h3>
+                        {/* form*/}
+                        <div className='max-md:w-full max-md:mt-[20px] max-md:gap-[25px] flex flex-col gap-[10px] w-[400px] bg-[var(--blackgray)] h-auto p-[40px] max-md:p-[30px] rounded-[25px]'>
+                            <h3 className='font-bold text-sm capitalize max-md:text-[16px]'>get 10% OFF of your first purchase</h3>
                             <form action="" className='flex flex-col gap-[15px]'>
-                                <input type="email" name="" id="" className='w-full border-[0.1px] outline-none bg-white text-gray-500 py-[18px] px-[15px] rounded-[25px] text-xs' placeholder='Enter your email address' />
-                                <button type="submit" className='w-full border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[15px] px-[15px] rounded-[25px] text-sm font-bold transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)]'>Subscribe</button>
+                                <input type="email" name="" id="" className='w-full border-[0.1px] outline-none bg-white text-gray-500 py-[18px] px-[15px] max-md:py-[16px] max-md:px-[18px] rounded-[25px] text-xs max-md:text-sm' placeholder='Enter your email address' />
+                                <button type="submit" className='w-full border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[15px] px-[15px] max-md:py-[16px] max-md:px-[18px] rounded-[25px] max-md:text-[16px] text-sm font-bold transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)]'>Subscribe</button>
                             </form>
                         </div>
-
 
                     </div>
 
 
-                    <div className="flex justify-between gap-[20px] py-[30px]">
-                        <div className='flex gap-[20px] items-center text-white'>
+                    <div className="flex max-md:flex-col max-md:justify-center max-md:items-center justify-between gap-[20px] py-[30px]">
+                        <div className='flex max-md:flex-col gap-[20px] items-center text-white'>
                             <div className='flex gap-[5px] items-center'>
                                 <ShoppingBag className='text-[var(--royalblue)]' />
                                 <span className='text-white text-[22px] font-semi-bold'>CartPulse</span>
                             </div>
-                            <div className=''>|</div>
-                            <span className="text-xs">Copyright © Storewave X | Designed by BRIX Templates - Powered by Webflow</span>
+                            <div className="flex gap-[20px] items-center">
+                                <div className=''>|</div>
+                                <span className="text-xs max-md:text-sm">Copyright © Storewave X | Designed by BRIX Templates - Powered by Webflow</span>
+
+                            </div>
                         </div>
 
                         <div className='flex gap-[10px] items-center'>
                             <div className="h-[40px] w-[60px] overflow-hidden rounded-[10px]">
-                                <img src={ paypal } alt="" className='h-full w-full object-cover' />
+                                <img src={paypal} alt="" className='h-full w-full object-cover' />
                             </div>
 
                             <div className="h-[40px] w-[60px] overflow-hidden rounded-[10px]">
-                                <img src={ stripe } alt="" className='h-full w-full object-cover' />
+                                <img src={stripe} alt="" className='h-full w-full object-cover' />
                             </div>
 
                             <div className="h-[40px] w-[60px] overflow-hidden rounded-[10px]">

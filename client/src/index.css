@@ -34,18 +34,25 @@ body {
 
 .container {
   margin: 0 auto;
-  width: 85%;
+  width: 90%;
   max-width: 1200px;
 }
 
 #flower-vase {
   background-image: url(./images/product-images/flower-vase.webp);
   background-size: cover;
-  background-position: center;
+  background-position:bottom;
 }
 
 #flower-pot {
   background: url(./images/product-images/flower-pot.webp), #fff4f5;
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
+}
+
+@media (max-width:760px) {
+  .container{
+    width: 85%;
+  }
+  
 }
