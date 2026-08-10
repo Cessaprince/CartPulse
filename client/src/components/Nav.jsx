@@ -1,13 +1,50 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Phone, Mail, ShoppingBag, Search, Handbag, ChevronDown, ChevronRight, Shirt, Menu } from 'lucide-react';
+import { Phone, Mail, ShoppingBag, Search, Handbag, ChevronDown, ChevronRight, Shirt, Menu, X, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 
 
 const Nav = () => {
+
+
+  {/* for category dropdown display and close*/ }
+  const [showCategories, setShowCategories] = useState(false);
+  const categoriesTimeout = useRef(null);
+
+  const openCategories = () => {
+    clearTimeout(categoriesTimeout.current);
+    setShowCategories(true);
+  };
+
+  const closeCategories = () => {
+    categoriesTimeout.current = setTimeout(() => {
+      setShowCategories(false);
+    }, 50);
+  };
+
+  {/* for join Us display and close (when not authenticated)*/ }
+
+  const [showJoinUs, setShowJoinUs] = useState(false);
+  const joinUsTimeout = useRef(null); //stores Id for the timer
+
+  const openJoinUs = () => {
+    clearTimeout(joinUsTimeout.current); //pends any pending close timer and sets join us to true and reveals UI
+    setShowJoinUs(true)
+  }
+
+  const closeJoinUs = () => {
+    joinUsTimeout.current = setTimeout(
+      () => { setShowJoinUs(false) },
+      50)
+    //updates .current property from null to active timer ID then sets join us to false and hides UI
+  }
+
+  {/* for the menu tag */ }
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <div className=''>
+    <div className='relative'>
 
       {/* top page description*/}
       <section className='bg-[var(--navyblue-grayish)] py-[15px] max-md:hidden'>
@@ -96,17 +133,25 @@ const Nav = () => {
                 </div>
               </Link>
 
-{/* menu when in mobile or ipad view*/}
-              <span className='lg:hidden flex justify-center items-center h-[40px] w-[40px] p-[3px] rounded-full bg-[var(--royalblue)]'>
-                <Menu className='font-bold text-white h-5 w-5' />
+              {/* menu when in mobile or ipad view*/}
+              <span
+                className='lg:hidden flex justify-center items-center h-[40px] w-[40px] p-[3px] rounded-full bg-[var(--royalblue)] cursor-pointer'
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)} //from false to true
+              >
+                {mobileMenuOpen ? (
+                  <X className='font-bold text-white h-5 w-5' />
+                ) : (
+                  <Menu className='font-bold text-white h-5 w-5' /> //if open, change to x else menu
+                )}
+
               </span>
             </div>
 
 
           </div>
 
-          {/* nav */}
-          <nav className='max-md:hidden mx-auto mt-5 max-w-[550px] flex flex-col'>
+          {/* nav on desktop view*/}
+          <nav className='max-md:hidden mx-auto mt-5 max-w-[550px] flex'>
 
             <div className="w-full flex items-center justify-between py-2">
               <Link to='/' className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
@@ -117,10 +162,13 @@ const Nav = () => {
                 products
               </Link>
 
-              <Link className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out group flex items-center'>
+              <Link
+                className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out group flex items-center'
+                onMouseEnter={openCategories}
+                onMouseLeave={closeCategories}
+              >
                 <span>categories</span>
-                <ChevronDown size={16} />
-              </Link>
+                {showCategories ? <ChevronUp size={16} /> : <ChevronDown size={16} />}              </Link>
 
               <Link to='/contact-us' className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
                 contact
@@ -130,9 +178,12 @@ const Nav = () => {
                 blog
               </Link>
 
-              <Link className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out group flex items-center'>
+              <Link className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out group flex items-center'
+                onMouseEnter={openJoinUs}
+                onMouseLeave={closeJoinUs}
+              >
                 <span>join us</span>
-                <ChevronDown size={16} />
+                {showJoinUs ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
               </Link>
 
               {/* change join us to account after authentication*/}
@@ -144,12 +195,251 @@ const Nav = () => {
 
           </nav>
 
+
         </div>
       </section>
 
+      {/* Mobile full-screen menu */}
+      <section className={`${mobileMenuOpen ? 'flex' : 'hidden'} absolute top-full left-0 right-0 z-50 bg-[var(--navyblue)] flex-col min-h-screen`}>        <div className="container">
+        <nav className='flex flex-col gap-[25px] pt-[30px]'>
+          <Link to='/' className='capitalize text-[var(--white)] text-lg hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
+            home
+          </Link>
+          <Link to='/shop' className='capitalize text-[var(--white)] text-lg hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
+            products
+          </Link>
+          <Link
+            className='capitalize text-[var(--white)] text-lg hover:text-[var(--royalblue)] transition duration-300 ease-in-out flex items-center gap-[5px]'
+            onClick={() => setShowCategories(!showCategories)}
+          >
+            categories
+            {showCategories ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+          </Link>
+
+          {/* mobile inline version of the categories dropdown links */}
+
+
+          {showCategories && (
+            <div className='w-full grid grid-cols-3 gap-[20px] py-[5px]'>
+
+              {/* 1*/}
+              <div className='flex flex-col gap-[2px] text-[10px]'>
+                <h3 className='text-white font-bold py-[10px] border-b-[0.1px] border-white'>Products by category</h3>
+
+                {/* categories 1*/}
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+              </div>
+
+              {/* 2*/}
+              <div className='flex flex-col gap-[2px] text-[10px]'>
+                <h3 className='text-white font-bold py-[10px] border-b-[0.1px] border-white'>Products by category</h3>
+
+                {/* categories 1*/}
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+
+              </div>
+
+              {/* 3*/}
+              <div className='flex flex-col gap-[2px] text-[10px]'>
+                <h3 className='text-white font-bold py-[10px] border-b-[0.1px] border-white'>Products by category</h3>
+
+                {/* categories 1*/}
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+                <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+
+                  <div className='flex items-center gap-[5px]'>
+                    <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={12} />
+
+                    <span className='text-white py-[10px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
+                      fashion
+                    </span>
+                  </div>
+
+                  <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' size={12} />
+
+                </Link>
+
+              </div>
+            </div>
+          )}
+
+          <Link to='/contact-us' className='capitalize text-[var(--white)] text-lg hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
+            contact
+          </Link>
+          <Link to='/blog' className='capitalize text-[var(--white)] text-lg hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
+            blog
+          </Link>
+
+          <Link
+            className='capitalize text-[var(--white)] text-lg hover:text-[var(--royalblue)] transition duration-300 ease-in-out flex items-center gap-[5px]'
+            onClick={() => setShowJoinUs(!showJoinUs)}
+          >
+            join us
+            {showJoinUs ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+          </Link>
+
+          {/* mobile inline version of the join us dropdown links */}
+          {showJoinUs && (
+            <div className='w-full flex flex-col gap-[15px] text-white text-sm'>
+              <Link className='flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
+                <Shirt size={16} className='text-[var(--royalblue)]' />
+                login
+              </Link>
+              <Link className='flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
+                <Shirt size={16} className='text-[var(--royalblue)]' />
+                signup
+              </Link>
+            </div>
+          )}
+        </nav>
+      </div>
+      </section>
+
+
       {/* Dropdown content when hovering categories */}
 
-      <section className="hidden bg-[var(--navyblue)]">
+      <section
+        className={`${showCategories ? 'block' : 'hidden'} max-md:hidden bg-[var(--navyblue)]`}
+        onMouseEnter={openCategories}
+        onMouseLeave={closeCategories}
+      >
         <div className="container">
           <div className='w-full grid grid-cols-3 gap-[35px] pt-[30px] pb-[50px] px-[30px]'>
 
@@ -335,7 +625,10 @@ const Nav = () => {
 
       {/* Dropdown content when hovering Join Us*/}
 
-      <section className="hidden bg-[var(--navyblue)]">
+      <section className={`${showJoinUs ? 'block' : 'hidden'} max-md:hidden bg-[var(--navyblue)]`}
+        onMouseEnter={openJoinUs}
+        onMouseLeave={closeJoinUs}
+      >
         <div className="container flex justify-center">
           <div className='w-[50%] flex flex-col gap-[10px] pt-[30px] pb-[50px] px-[30px] text-sm'>
             <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
