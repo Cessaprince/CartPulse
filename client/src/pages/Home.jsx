@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
@@ -12,8 +13,8 @@ import Discount from '../components/Discount';
 const Home = () => {
     return (
         <div>
-            <Nav />
 
+            <Nav />
             <section className='py-[50px] max-md:pt-[50px] max-md:pb-[0px]'>
                 <div className="container flex flex-col gap-[5px] max-md:gap-[30px]">
 
@@ -111,7 +112,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <Discount stackOnMobile={true} className='max-md:order-2'/>
+                    <Discount stackOnMobile={true} className='max-md:order-2' />
 
                 </div>
 
@@ -258,7 +259,7 @@ const Home = () => {
                     <div className="w-full flex justify-between bg-gray-100 rounded-[10px] p-[100px] max-md:py-[70px] max-md:px-[50px] relative">
                         {/* graycoat and text area*/}
                         <div className="flex flex-col w-[50%] max-md:w-[60%] gap-[25px]">
-                            
+
                             <div className="flex gap-[30px] items-center">
                                 <div className="self-stretch p-[1.5px] bg-[var(--royalblue)]"></div>
 
@@ -382,33 +383,30 @@ const Home = () => {
             </section>
 
 
-            <section className="py-[40px]">
-                <div className="container flex pb-[100px] border-b-[0.1px] border-gray-300">
+            <section className="py-[40px] max-md:w-full">
+                <div className="container flex pb-[100px] border-b-[0.1px] border-gray-300 max-md:w-full">
                     <div className="mx-auto flex flex-col gap-[40px] items-center">
                         <h3 className='text-[25px]'>Top categories this month</h3>
-                        <div className="flex gap-[50px] justify-between items-center">
-                            <div className="flex flex-col gap-[10px] items-center group cursor-pointer">
-                                <div className="overflow-hidden w-[120px] h-[120px] rounded-full transition-transform duration-300 group-hover:scale-105">
+                        <div className="flex gap-[50px] justify-between items-center max-md:w-full">
+                            <div className="flex flex-col gap-[10px] items-center group cursor-pointer max-md:w-[33%]">
+                                <div className="overflow-hidden w-[120px] h-[120px] max-md:w-full max-md:h-[33%] rounded-full transition-transform duration-300 group-hover:scale-105">
                                     <img src={sneakers} alt="" className='w-full h-full object-cover' />
                                 </div>
-                                <Link className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)] transition duration-300'>Basic gray t-shirt</Link>
-
+                                <Link className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)] transition duration-300 max-w-[120px] text-center'>Basic gray t-shirt</Link>
                             </div>
 
-                            <div className="flex flex-col gap-[10px] items-center group cursor-pointer">
-                                <div className="overflow-hidden w-[120px] h-[120px] rounded-full transition-transform duration-300 group-hover:scale-105">
+                            <div className="flex flex-col gap-[10px] items-center group cursor-pointer max-md:w-[33%]">
+                                <div className="overflow-hidden w-[120px] h-[120px] max-md:w-full max-md:h-[33%] rounded-full transition-transform duration-300 group-hover:scale-105">
                                     <img src={sneakers} alt="" className='w-full h-full object-cover' />
                                 </div>
-                                <Link className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)] transition duration-300'>Basic gray t-shirt</Link>
-
+                                <Link className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)] transition duration-300 max-w-[120px] text-center'>Basic gray t-shirt</Link>
                             </div>
 
-                            <div className="flex flex-col gap-[10px] items-center group cursor-pointer">
-                                <div className="overflow-hidden w-[120px] h-[120px] rounded-full transition-transform duration-300 group-hover:scale-105">
+                            <div className="flex flex-col gap-[10px] items-center group cursor-pointer max-md:w-[33%]">
+                                <div className="overflow-hidden w-[120px] h-[120px] max-md:w-full max-md:h-[33%] rounded-full transition-transform duration-300 group-hover:scale-105">
                                     <img src={sneakers} alt="" className='w-full h-full object-cover' />
                                 </div>
-                                <Link className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)] transition duration-300'>Basic gray t-shirt</Link>
-
+                                <Link className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)] transition duration-300 max-w-[120px] text-center'>Basic gray t-shirt</Link>
                             </div>
                         </div>
                     </div>
@@ -420,7 +418,7 @@ const Home = () => {
                     <div className="grid grid-cols-3 gap-[40px] max-md:grid-cols-1 ">
                         {/* each table*/}
 
-                        <div className="flex flex-col gap-[40px]">
+                        <div className="flex flex-col gap-[40px] max-md:w-full">
                             <h3 className='text-[25px]'>Popular products</h3>
                             <div className="flex flex-col gap-[20px]">
 
@@ -475,7 +473,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col gap-[40px]">
+                        <div className="flex flex-col gap-[40px] max-md:w-full">
                             <h3 className='text-[25px] '>Top rated products</h3>
                             <div className="flex flex-col gap-[20px]">
 
@@ -530,7 +528,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col gap-[40px]">
+                        <div className="flex flex-col gap-[40px] max-md:w-full">
                             <h3 className='text-[25px] '>Top selling products</h3>
                             <div className="flex flex-col gap-[20px]">
 
@@ -590,9 +588,10 @@ const Home = () => {
 
             <section className='bg-gray-50 py-[80px] max-md:py-[40px]'>
                 <div className="container flex">
-                    <div className="mx-auto flex p-[50px] justify-evenly gap-[30px] border-[0.1px] border-gray-200 bg-[var(--white)] rounded-[10px]">
+                    <div className="mx-auto flex p-[50px] max-md:p-[20px] justify-evenly gap-[30px] max-md:gap-[10px] border-[0.1px] border-gray-200 bg-[var(--white)] rounded-[10px] max-md:w-full max-md:flex-col">
+
                         {/* each icon*/}
-                        <div className="px-[20px] border-r border-r-[0.10px] border-gray-300 flex items-center gap-[15px] max-md:flex-col">
+                        <div className="px-[20px] border-r border-r-[0.10px] border-gray-300 max-md:border-none flex items-center gap-[15px]">
                             <Van className='text-[var(--royalblue)]' size={50} />
                             <div className="flex flex-col">
                                 <span className="text-[16px] text-gray-600 capitalize">Free shiping</span>
@@ -600,7 +599,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="px-[20px] border-r border-r-[0.10px] border-gray-300 flex items-center max-md:flex-col gap-[15px]">
+                        <div className="px-[20px] border-r border-r-[0.10px] border-gray-300 max-md:border-none flex items-center gap-[15px]">
                             <Van className='text-[var(--royalblue)]' size={50} />
                             <div className="flex flex-col">
                                 <span className="text-[16px] text-gray-600 capitalize">Free shiping</span>
@@ -608,14 +607,13 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="px-[20px] border-r border-r-[0.10px] border-gray-300 max-md:border-none flex items-center max-md:flex-col gap-[15px]">
+                        <div className="px-[20px] flex items-center gap-[15px]">
                             <Van className='text-[var(--royalblue)]' size={50} />
                             <div className="flex flex-col">
                                 <span className="text-[16px] text-gray-600 capitalize">Free shiping</span>
                                 <span className="text-[12px] text-gray-400 font-light">on all orders over $99 USD</span>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
