@@ -418,11 +418,11 @@ const Nav = () => {
           {/* mobile inline version of the join us dropdown links */}
           {showJoinUs && (
             <div className='w-full flex flex-col gap-[15px] text-white text-sm'>
-              <Link className='flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
+              <Link to='/login' className='group flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
                 <Shirt size={16} className='text-[var(--royalblue)]' />
                 login
               </Link>
-              <Link className='flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
+              <Link to='/signup' className='group flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
                 <Shirt size={16} className='text-[var(--royalblue)]' />
                 signup
               </Link>
@@ -631,7 +631,7 @@ const Nav = () => {
       >
         <div className="container flex justify-center">
           <div className='w-[50%] flex flex-col gap-[10px] pt-[30px] pb-[50px] px-[30px] text-sm'>
-            <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+            <Link to='/login' className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
 
               <div className='flex items-center gap-[5px]'>
                 <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
@@ -644,7 +644,7 @@ const Nav = () => {
               <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
 
             </Link>
-            <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+            <Link to='/signup' className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
 
               <div className='flex items-center gap-[5px]'>
                 <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
