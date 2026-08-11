@@ -5,11 +5,14 @@ import { Link } from 'react-router-dom'
 import paypal from '../images/page-images/paypal.png'
 import stripe from '../images/page-images/stripe.png'
 import mastercard from '../images/page-images/mastercard.png'
+import indoorPlant from '../images/product-images/indoor-plant.webp'
+import pinkShirt from '../images/product-images/pink-shirt.webp'
+import vintageDecor from '../images/product-images/vintage-decor-wall.webp'
 
 const Footer = () => {
     return (
         <div>
-<section className='bg-[var(--navyblue-grayish)] py-[15px]'>
+            <section className='bg-[var(--navyblue-grayish)] py-[15px]'>
                 <div className="container">
 
                     <div className="flex max-md:flex-wrap justify-between items-center gap-[30px] text-[var(--white)] py-[50px] border-b-[0.1px] border-gray-500">
@@ -44,13 +47,13 @@ const Footer = () => {
                             <div className="flex flex-col gap-[15px]">
 
                                 {/* each product*/}
-                                <div className="flex gap-[10px]">
+                                <div className="flex gap-[10px] group cursor-pointer">
                                     <div className="h-[50px] w-[55px] overflow-hidden">
-                                        <img src="" alt="" className='h-full w-full object-cover' />
+                                        <img src={indoorPlant} alt="" className='h-full w-full object-cover group-hover:scale-105' />
                                     </div>
 
                                     <div className="flex flex-col">
-                                        <Link className='font-bold text-sm capitalize hover:text-[var(--royalblue)] cursor-pointer'>11-inch indoor plant</Link>
+                                        <Link className='font-bold text-sm capitalize group-hover:text-[var(--royalblue)] cursor-pointer'>11-inch indoor plant</Link>
                                         <div className="flex gap-[10px]">
                                             <span className='text-[var(--white)] text-sm'>$19.99</span>
                                             <del className='text-[var(--white)] text-sm'>$29.99</del>
@@ -60,13 +63,13 @@ const Footer = () => {
 
                                 </div>
 
-                                <div className="flex gap-[10px]">
+                                <div className="flex gap-[10px] group cursor-pointer">
                                     <div className="h-[50px] w-[55px] overflow-hidden">
-                                        <img src="" alt="" className='h-full w-full object-cover' />
+                                        <img src={pinkShirt} alt="" className='h-full w-full object-cover group-hover:scale-105' />
                                     </div>
 
                                     <div className="flex flex-col">
-                                        <Link to='' className='font-bold text-sm capitalize hover:text-[var(--royalblue)] cursor-pointer'>pink t-shirt</Link>
+                                        <Link to='' className='font-bold text-sm capitalize group-hover:text-[var(--royalblue)] cursor-pointer'>pink t-shirt</Link>
                                         <div className="flex gap-[10px]">
                                             <span className='text-[var(--white)] text-sm'>$19.99</span>
                                             <del className='text-[var(--white)] text-sm'>$29.99</del>
@@ -76,19 +79,18 @@ const Footer = () => {
 
                                 </div>
 
-                                <div className="flex gap-[10px]">
+                                <div className="flex gap-[10px] group cursor-pointer">
                                     <div className="h-[50px] w-[55px] overflow-hidden">
-                                        <img src="" alt="" className='h-full w-full object-cover' />
+                                        <img src={vintageDecor} alt="" className='h-full w-full object-cover group-hover:scale-105' />
                                     </div>
 
                                     <div className="flex flex-col">
-                                        <Link className='font-bold text-sm capitalize hover:text-[var(--royalblue)] cursor-pointer'>vintage wall decor</Link>
+                                        <Link className='font-bold text-sm capitalize group-hover:text-[var(--royalblue)] cursor-pointer'>vintage wall decor</Link>
                                         <div className="flex gap-[10px]">
                                             <span className='text-[var(--white)] text-sm'>$19.99</span>
                                             <del className='text-[var(--white)] text-sm'>$29.99</del>
                                         </div>
                                     </div>
-
 
                                 </div>
                             </div>

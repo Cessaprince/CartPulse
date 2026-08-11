@@ -121,9 +121,9 @@ const Home = () => {
 
             <section className='py-[70px]'>
                 <div className="container">
-                    <div className="flex justify-between gap-[20px] py-[20px]">
-                        <h3 className='text-[25px]'>Latest products</h3>
-                        <Link to='' className='flex justify-center font-light w-fit border-[0.1px] outline-none py-[15px] px-[25px] rounded-[25px] text-sm transition duration-500 ease border-gray-200 hover:border-[var(--royalblue)] hover:-translate-y-1 hover:text-[var(--royalblue)] cursor-pointer'>Explore products</Link>
+                    <div className="flex justify-between items-center gap-[10px] py-[20px]">
+                        <h3 className='text-[25px] max-md:text-[16px]'>Latest products</h3>
+                        <Link to='' className='flex justify-center items-center font-light w-fit whitespace-nowrap border-[0.1px] outline-none py-[15px] px-[25px] max-md:py-[8px] max-md:px-[12px] rounded-[25px] text-sm max-md:text-[10px] transition duration-500 ease border-gray-200 hover:border-[var(--royalblue)] hover:-translate-y-1 hover:text-[var(--royalblue)] cursor-pointer'>Explore products</Link>
                     </div>
 
                     {/* latest products */}
@@ -286,9 +286,9 @@ const Home = () => {
 
             <section className='py-[70px]'>
                 <div className="container">
-                    <div className="flex justify-between gap-[20px] py-[20px]">
-                        <h3 className='text-[25px]'>Popular products</h3>
-                        <Link to='' className='flex justify-center font-light w-fit border-[0.1px] outline-none py-[15px] px-[25px] rounded-[25px] text-sm transition duration-500 ease border-gray-200 hover:border-[var(--royalblue)] hover:-translate-y-1 hover:text-[var(--royalblue)] cursor-pointer'>Explore popular products</Link>
+                    <div className="flex justify-between items-center gap-[10px] py-[20px]">
+                        <h3 className='text-[25px] max-md:text-[16px]'>Popular products</h3>
+                        <Link to='' className='flex justify-center items-center font-light w-fit whitespace-nowrap border-[0.1px] outline-none py-[15px] px-[25px] max-md:py-[8px] max-md:px-[12px] rounded-[25px] text-sm max-md:text-[10px] transition duration-500 ease border-gray-200 hover:border-[var(--royalblue)] hover:-translate-y-1 hover:text-[var(--royalblue)] cursor-pointer'>Explore popular products</Link>
                     </div>
 
                     {/* latest products */}
@@ -304,15 +304,15 @@ const Home = () => {
 
 
                                 <div className='flex flex-col gap-[5px] mt-[20px] px-[30px]'>
-                                    <h3 className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)]'>Basic gray t-shirt</h3>
-                                    <span className='font-light text-gray-500 text-[16px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
+                                    <h3 className='font-semibold text-[18px] max-md:text-[16px] capitalize group-hover:text-[var(--royalblue)]'>Basic gray t-shirt</h3>
+                                    <span className='font-light text-gray-500 text-[16px] max-md:text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
 
                                     <Link className='mt-[15px] flex items-center capitalize text-white w-fit border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[15px] px-[18px] rounded-[25px] text-xs transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)]'>add to cart</Link>
 
                                 </div>
                             </div>
 
-                            <div className="min-w-[25%] max-w-[25%] max-md:min-w-[60%] max-md:max-w-[60%] pb-[30px] group cursor-pointer flex flex-col overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1 relative">
+                            <div className="min-w-[25%] max-w-[25%] max-md:min-w-[60%] max-md:max-w-[60%] pb-[30px]  group cursor-pointer flex flex-col overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1 relative">
                                 <div className="w-full h-[60%] overflow-hidden">
                                     <img src={grayShirt} alt="" className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 relative' />
                                 </div>
@@ -320,15 +320,15 @@ const Home = () => {
 
 
                                 <div className='flex flex-col gap-[5px] mt-[20px] px-[30px]'>
-                                    <h3 className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)]'>Basic gray t-shirt</h3>
-                                    <span className='font-light text-gray-500 text-[16px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
+                                    <h3 className='font-semibold text-[18px] max-md:text-[16px] capitalize group-hover:text-[var(--royalblue)]'>Basic gray t-shirt</h3>
+                                    <span className='font-light text-gray-500 text-[16px] max-md:text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
 
                                     <Link className='mt-[15px] flex items-center capitalize text-white w-fit border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[15px] px-[18px] rounded-[25px] text-xs transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)]'>add to cart</Link>
 
                                 </div>
                             </div>
 
-                            <div className="min-w-[25%] max-w-[25%] max-md:min-w-[60%] max-md:max-w-[60%] pb-[30px] group cursor-pointer flex flex-col overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1 relative">
+                            <div className="min-w-[25%] max-w-[25%] max-md:min-w-[60%] max-md:max-w-[60%] pb-[30px]  group cursor-pointer flex flex-col overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1 relative">
                                 <div className="w-full h-[60%] overflow-hidden">
                                     <img src={grayShirt} alt="" className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 relative' />
                                 </div>
@@ -336,15 +336,15 @@ const Home = () => {
 
 
                                 <div className='flex flex-col gap-[5px] mt-[20px] px-[30px]'>
-                                    <h3 className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)]'>Basic gray t-shirt</h3>
-                                    <span className='font-light text-gray-500 text-[16px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
+                                    <h3 className='font-semibold text-[18px] max-md:text-[16px] capitalize group-hover:text-[var(--royalblue)]'>Basic gray t-shirt</h3>
+                                    <span className='font-light text-gray-500 text-[16px] max-md:text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
 
                                     <Link className='mt-[15px] flex items-center capitalize text-white w-fit border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[15px] px-[18px] rounded-[25px] text-xs transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)]'>add to cart</Link>
 
                                 </div>
                             </div>
 
-                            <div className="min-w-[25%] max-w-[25%] max-md:min-w-[60%] max-md:max-w-[60%] pb-[30px] group cursor-pointer flex flex-col overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1 relative">
+                            <div className="min-w-[25%] max-w-[25%] max-md:min-w-[60%] max-md:max-w-[60%] pb-[30px]  group cursor-pointer flex flex-col overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1 relative">
                                 <div className="w-full h-[60%] overflow-hidden">
                                     <img src={grayShirt} alt="" className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 relative' />
                                 </div>
@@ -352,15 +352,15 @@ const Home = () => {
 
 
                                 <div className='flex flex-col gap-[5px] mt-[20px] px-[30px]'>
-                                    <h3 className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)]'>Basic gray t-shirt</h3>
-                                    <span className='font-light text-gray-500 text-[16px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
+                                    <h3 className='font-semibold text-[18px] max-md:text-[16px] capitalize group-hover:text-[var(--royalblue)]'>Basic gray t-shirt</h3>
+                                    <span className='font-light text-gray-500 text-[16px] max-md:text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
 
                                     <Link className='mt-[15px] flex items-center capitalize text-white w-fit border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[15px] px-[18px] rounded-[25px] text-xs transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)]'>add to cart</Link>
 
                                 </div>
                             </div>
 
-                            <div className="min-w-[25%] max-w-[25%] max-md:min-w-[60%] max-md:max-w-[60%] pb-[30px] group cursor-pointer flex flex-col overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1 relative">
+                            <div className="min-w-[25%] max-w-[25%] max-md:min-w-[60%] max-md:max-w-[60%] pb-[30px]  group cursor-pointer flex flex-col overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1 relative">
                                 <div className="w-full h-[60%] overflow-hidden">
                                     <img src={grayShirt} alt="" className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 relative' />
                                 </div>
@@ -368,8 +368,8 @@ const Home = () => {
 
 
                                 <div className='flex flex-col gap-[5px] mt-[20px] px-[30px]'>
-                                    <h3 className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)]'>Basic gray t-shirt</h3>
-                                    <span className='font-light text-gray-500 text-[16px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
+                                    <h3 className='font-semibold text-[18px] max-md:text-[16px] capitalize group-hover:text-[var(--royalblue)]'>Basic gray t-shirt</h3>
+                                    <span className='font-light text-gray-500 text-[16px] max-md:text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
 
                                     <Link className='mt-[15px] flex items-center capitalize text-white w-fit border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[15px] px-[18px] rounded-[25px] text-xs transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)]'>add to cart</Link>
 
@@ -386,27 +386,27 @@ const Home = () => {
             <section className="py-[40px] max-md:w-full">
                 <div className="container flex pb-[100px] border-b-[0.1px] border-gray-300 max-md:w-full">
                     <div className="mx-auto flex flex-col gap-[40px] items-center">
-                        <h3 className='text-[25px]'>Top categories this month</h3>
+                        <h3 className='text-[25px] max-md:text-[22px]'>Top categories this month</h3>
                         <div className="flex gap-[50px] justify-between items-center max-md:w-full">
                             <div className="flex flex-col gap-[10px] items-center group cursor-pointer max-md:w-[33%]">
                                 <div className="overflow-hidden w-[120px] h-[120px] max-md:w-full max-md:h-[33%] rounded-full transition-transform duration-300 group-hover:scale-105">
                                     <img src={sneakers} alt="" className='w-full h-full object-cover' />
                                 </div>
-                                <Link className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)] transition duration-300 max-w-[120px] text-center'>Basic gray t-shirt</Link>
+                                <Link className='font-semibold text-[18px] max-md:text-[14px] capitalize group-hover:text-[var(--royalblue)] transition duration-300 max-w-[120px] text-center'>Basic gray t-shirt</Link>
                             </div>
 
                             <div className="flex flex-col gap-[10px] items-center group cursor-pointer max-md:w-[33%]">
                                 <div className="overflow-hidden w-[120px] h-[120px] max-md:w-full max-md:h-[33%] rounded-full transition-transform duration-300 group-hover:scale-105">
                                     <img src={sneakers} alt="" className='w-full h-full object-cover' />
                                 </div>
-                                <Link className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)] transition duration-300 max-w-[120px] text-center'>Basic gray t-shirt</Link>
+                                <Link className='font-semibold text-[18px] max-md:text-[14px] capitalize group-hover:text-[var(--royalblue)] transition duration-300 max-w-[120px] text-center'>Basic gray t-shirt</Link>
                             </div>
 
                             <div className="flex flex-col gap-[10px] items-center group cursor-pointer max-md:w-[33%]">
                                 <div className="overflow-hidden w-[120px] h-[120px] max-md:w-full max-md:h-[33%] rounded-full transition-transform duration-300 group-hover:scale-105">
                                     <img src={sneakers} alt="" className='w-full h-full object-cover' />
                                 </div>
-                                <Link className='font-semibold text-[18px] capitalize group-hover:text-[var(--royalblue)] transition duration-300 max-w-[120px] text-center'>Basic gray t-shirt</Link>
+                                <Link className='font-semibold text-[18px] max-md:text-[14px] capitalize group-hover:text-[var(--royalblue)] transition duration-300 max-w-[120px] text-center'>Basic gray t-shirt</Link>
                             </div>
                         </div>
                     </div>
@@ -419,7 +419,7 @@ const Home = () => {
                         {/* each table*/}
 
                         <div className="flex flex-col gap-[40px] max-md:w-full">
-                            <h3 className='text-[25px]'>Popular products</h3>
+                            <h3 className='text-[25px] max-md:text-[22px]'>Popular products</h3>
                             <div className="flex flex-col gap-[20px]">
 
                                 {/* each product */}
@@ -474,7 +474,7 @@ const Home = () => {
                         </div>
 
                         <div className="flex flex-col gap-[40px] max-md:w-full">
-                            <h3 className='text-[25px] '>Top rated products</h3>
+                            <h3 className='text-[25px] max-md:text-[22px]'>Top rated products</h3>
                             <div className="flex flex-col gap-[20px]">
 
                                 {/* each product */}
@@ -529,7 +529,7 @@ const Home = () => {
                         </div>
 
                         <div className="flex flex-col gap-[40px] max-md:w-full">
-                            <h3 className='text-[25px] '>Top selling products</h3>
+                            <h3 className='text-[25px] max-md:text-[22px]'>Top selling products</h3>
                             <div className="flex flex-col gap-[20px]">
 
                                 {/* each product */}

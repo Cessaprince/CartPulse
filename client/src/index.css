@@ -50,7 +50,7 @@ body {
   background-position: bottom;
 }
 
-@media (max-width:760px) {
+@media (max-width:768px) {
   .container{
     width: 85%;
   }
