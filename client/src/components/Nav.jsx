@@ -1,8 +1,14 @@
 import React, { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Phone, Mail, ShoppingBag, Search, Handbag, ChevronDown, ChevronRight, Shirt, Menu, X, ChevronUp } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import sneakers from '../images/product-images/sneakers.png'
+
+//new imports for the logged in user/ authenticated user
+
+import { useAuth } from '../context/AuthContext';
+import { auth } from '../firebase';
+import { signOut } from 'firebase/auth';
 
 
 
@@ -56,7 +62,21 @@ const Nav = () => {
     setIsClicked(false)
   }
 
+  //for the authebticated user and the usecontext function reference: useAuth that was created
 
+  //user is either true or false(null)
+  const { user } = useAuth() //useauth() is the function that has usecontext that has authcontext return { user }
+  const navigate = useNavigate() //to navigate 
+
+  //function to handle logging out
+  const handleLogout = async () => {
+    try {
+      await signOut(auth)
+      navigate('/')
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <div className='relative'>
@@ -195,18 +215,14 @@ const Nav = () => {
                 blog
               </Link>
 
-              <Link className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out group flex items-center'
+              {/* what happens with the writeup on the navbar when one is logged in or logged out*/}
+              <Link
+                className='capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out group flex items-center'
                 onMouseEnter={openJoinUs}
                 onMouseLeave={closeJoinUs}
               >
-                <span>join us</span>
+                <span>{user ? 'account' : 'join us'}</span>
                 {showJoinUs ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-              </Link>
-
-              {/* change join us to account after authentication*/}
-              <Link className='hidden capitalize text-[var(--white)] text-sm hover:text-[var(--royalblue)] transition duration-300 ease-in-out group flex items-center'>
-                <span>account</span>
-                <ChevronDown size={16} />
               </Link>
             </div>
 
@@ -424,27 +440,43 @@ const Nav = () => {
             blog
           </Link>
 
+          {/* clicking on join us in the mobile view */}
           <Link
             className='capitalize text-[var(--white)] text-lg hover:text-[var(--royalblue)] transition duration-300 ease-in-out flex items-center gap-[5px]'
             onClick={() => setShowJoinUs(!showJoinUs)}
           >
-            join us
+            {user ? 'account' : 'join us'}
             {showJoinUs ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
           </Link>
 
           {/* mobile inline version of the join us dropdown links */}
+
           {showJoinUs && (
-            <div className='w-full flex flex-col gap-[15px] text-white text-sm'>
-              <Link to='/login' className='group flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
-                <Shirt size={16} className='text-[var(--royalblue)]' />
-                login
-              </Link>
-              <Link to='/signup' className='group flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
-                <Shirt size={16} className='text-[var(--royalblue)]' />
-                signup
-              </Link>
-            </div>
+            user ? (
+              <div className='w-full flex flex-col gap-[15px] text-white text-sm'>
+                <Link to='/cart' className='group flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
+                  <Shirt size={16} className='text-[var(--royalblue)]' />
+                  cart
+                </Link>
+                <Link onClick={handleLogout} className='group flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize cursor-pointer'>
+                  <Shirt size={16} className='text-[var(--royalblue)]' />
+                  logout
+                </Link>
+              </div>
+            ) : (
+              <div className='w-full flex flex-col gap-[15px] text-white text-sm'>
+                <Link to='/login' className='group flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
+                  <Shirt size={16} className='text-[var(--royalblue)]' />
+                  login
+                </Link>
+                <Link to='/signup' className='group flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
+                  <Shirt size={16} className='text-[var(--royalblue)]' />
+                  signup
+                </Link>
+              </div>
+            )
           )}
+
         </nav>
       </div>
       </section>
@@ -642,7 +674,10 @@ const Nav = () => {
 
       {/* Dropdown content when hovering Join Us*/}
 
-      <section className={`${showJoinUs ? 'block' : 'hidden'} max-md:hidden bg-[var(--navyblue)]`}
+      <section
+
+        /* when no user authenticated and showJoinUs is true */
+        className={`${(!user && showJoinUs) ? 'block' : 'hidden'} max-md:hidden bg-[var(--navyblue)]`}
         onMouseEnter={openJoinUs}
         onMouseLeave={closeJoinUs}
       >
@@ -680,34 +715,27 @@ const Nav = () => {
 
 
       {/* Dropdown content when hovering Join Us as account*/}
-      <section className="hidden bg-[var(--navyblue)]">
+      <section
+        className={`${(user && showJoinUs) ? 'block' : 'hidden'} max-md:hidden bg-[var(--navyblue)]`}
+        onMouseEnter={openJoinUs}
+        onMouseLeave={closeJoinUs}
+      >
         <div className="container flex justify-center">
           <div className='w-[50%] flex flex-col gap-[10px] pt-[30px] pb-[50px] px-[30px] text-sm'>
-            <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
-
+            <Link to='/cart' className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
               <div className='flex items-center gap-[5px]'>
                 <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-                <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                  cart
-                </span>
+                <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>cart</span>
               </div>
-
-              <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
+              <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)]' />
             </Link>
-            <Link className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
 
+            <Link onClick={handleLogout} className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out cursor-pointer'>
               <div className='flex items-center gap-[5px]'>
                 <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
-
-                <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>
-                  logout
-                </span>
+                <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>logout</span>
               </div>
-
-              <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)] transition-all' />
-
+              <ChevronRight className='text-white transition-all duration-500 ease-in-out group-hover:translate-x-[10px] group-hover:text-[var(--royalblue)]' />
             </Link>
           </div>
         </div>
