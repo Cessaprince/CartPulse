@@ -72,7 +72,7 @@ const Nav = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth)
-      navigate('/')
+      window.location.href = '/'
     } catch (error) {
       console.error(error)
     }
