@@ -1,12 +1,112 @@
 import React from 'react'
-import { EyeClosedIcon, EyeOff } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { EyeClosedIcon, EyeOff, Eye } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
 import googleLogo from '../images/page-images/google-logo.png'
 import { useState } from 'react'
+import iziToast from 'izitoast'
+import 'izitoast/dist/css/iziToast.min.css'
+
+//for the firebase authentication
+import { auth } from '../firebase'
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 
 const Login = () => {
-    
-    
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [seePassword, setSeePassword] = useState(false);
+
+    const navigate = useNavigate();
+
+    const emailTyping = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const passwordTyping = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const toggleSeePassword = () => {
+        setSeePassword(!seePassword)
+    }
+
+    const buttonClicked = async (e) => {
+
+        e.preventDefault()
+
+        if (isLoading === true) {
+            return
+        }
+
+        if (!email.trim() || !password.trim()) {
+            iziToast.error({
+                title: 'Validation Error',
+                message: 'Email and password are required!',
+                position: 'topRight',
+                timeout: 3000,
+            });
+            return;
+        }
+
+        setIsLoading(true)
+
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+
+            iziToast.success({
+                title: 'Success!',
+                message: 'Login Successful!',
+                position: 'topRight',
+                timeout: 3000,
+            })
+
+            navigate('/')
+        } catch (error) {
+            iziToast.error({
+                title: 'Login Failed',
+                message: error.message,
+                position: 'topRight',
+                timeout: 3000,
+            })
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    const googleLogin = async () => {
+
+        if (isLoading === true) {
+            return
+        }
+
+        setIsLoading(true)
+
+        try {
+            const provider = new GoogleAuthProvider()
+            await signInWithPopup(auth, provider)
+
+            iziToast.success({
+                title: 'Success!',
+                message: 'Login Successful!',
+                position: 'topRight',
+                timeout: 3000,
+            })
+
+            navigate('/')
+        } catch (error) {
+            iziToast.error({
+                title: 'Login Failed',
+                message: error.message,
+                position: 'topRight',
+                timeout: 3000,
+            })
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
     return (
         <div>
             <div className='flex container'>
@@ -14,25 +114,48 @@ const Login = () => {
                     <div className=''>
                         <form action="" className='w-full flex flex-col gap-[15px] '>
                             <h1 className='font-bold text-[22px] text-center'>Login</h1>
-                            <input type="email" placeholder='Email Address' className='text-[15px] border-[0.1px] border-gray-400 shadow-sm bg-white py-[10px] px-[15px] text-gray-500 w-full outline-none rounded-[5px]' />
-
+                            <input
+                                type="email"
+                                placeholder='Email Address'
+                                value={email}
+                                onChange={emailTyping}
+                                className='text-[15px] border-[0.1px] border-gray-400 shadow-sm bg-white py-[10px] px-[15px] text-gray-500 w-full outline-none rounded-[5px]'
+                            />
 
                             <div className="text-[15px] flex justify-between border-[0.1px] border-gray-400 shadow items-center bg-white py-[10px] px-[15px] text-gray-500 w-full outline-none rounded-[5px]">
-                                <input type="password" placeholder='Password' className='w-[80%] h-full outline-none' />
-                                <span className='group cursor-pointer'>
-                                    <EyeOff size={18} />
+                                <input
+                                    type={seePassword ? 'text' : 'password'}
+                                    placeholder='Password'
+                                    className='w-[80%] h-full outline-none'
+                                    value={password}
+                                    onChange={passwordTyping}
+                                />
+                                <span className='group cursor-pointer' onClick={toggleSeePassword}>
+                                    {seePassword ? <Eye size={18} /> : <EyeOff size={18} />}
                                 </span>
                             </div>
 
-                            <button type="submit" className='w-full py-[10px] bg-[var(--royalblue)] font-light text-white rounded-[5px] hover:bg-[var(--royalblue-hover)] hover:-translate-y-1 cursor-pointer transition-all duration-300 ease'>Login</button>
+                            <button
+                                type="submit"
+                                onClick={buttonClicked}
+                                disabled={isLoading}
+                                className='w-full py-[10px] bg-[var(--royalblue)] font-light text-white rounded-[5px] hover:bg-[var(--royalblue-hover)] hover:-translate-y-1 cursor-pointer transition-all duration-300 ease'
+                            >
+                                {isLoading ? 'Logging in..' : 'Login'}
+                            </button>
                             <p className='text-[15px] text-center text-gray-500'>Don't have an account? <Link to='/signup' className='text-[var(--royalblue)] hover:text-[var(--royalblue-hover)]'>Signup</Link></p>
 
-                            <fieldset class="border-t border-gray-300 my-[5px] text-center">
-                                <legend class="px-4 text-sm font-medium text-gray-500 uppercase">
+                            <fieldset className="border-t border-gray-300 my-[5px] text-center">
+                                <legend className="px-4 text-sm font-medium text-gray-500 uppercase">
                                     or
                                 </legend>
                             </fieldset>
-                            <button type="submit" className='group w-full py-[10px] border-[0.1px] border-gray-400 font-light text-gray-500 rounded-[5px] hover:-translate-y-1 cursor-pointer transition-all duration-300 ease flex items-center justify-center'>
+                            <button
+                                type="button"
+                                onClick={googleLogin}
+                                disabled={isLoading}
+                                className='group w-full py-[10px] border-[0.1px] border-gray-400 font-light text-gray-500 rounded-[5px] hover:-translate-y-1 cursor-pointer transition-all duration-300 ease flex items-center justify-center'
+                            >
                                 <span className='w-[50px] h-full rounded-full overflow-hidden'>
                                     <img src={googleLogo} alt="" />
                                 </span>

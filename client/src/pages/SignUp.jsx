@@ -114,7 +114,7 @@ const SignUp = () => {
                 timeout: 3000,
             })
 
-            navigate('/')
+            navigate('/login')
         } catch (error) {
             iziToast.error({
                 title: 'Sign Up Failed',
