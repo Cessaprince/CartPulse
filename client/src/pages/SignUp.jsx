@@ -6,6 +6,12 @@ import googleLogo from '../images/page-images/google-logo.png'
 import iziToast from 'izitoast'
 import 'izitoast/dist/css/iziToast.min.css'
 
+//for the firebase authentication for nornal button
+import { auth } from '../firebase'
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+
 const SignUp = () => {
 
     //these variables are for tracking the eye and eyeoff icons
@@ -62,7 +68,8 @@ const SignUp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate(); //used for navigation
 
-    const buttonClicked = (e) => {
+    //normal button
+    const buttonClicked = async (e) => {
 
         e.preventDefault()
 
@@ -77,10 +84,9 @@ const SignUp = () => {
                 position: 'topRight',
                 timeout: 3000,
             });
-            return; // function will stop executing once anyone is missing
+            return;
         }
 
-        // 2. Extra safety
         if (password.length < expectedLength || password !== confirmPassword) {
             iziToast.warning({
                 title: 'Attention',
@@ -88,13 +94,18 @@ const SignUp = () => {
                 position: 'topRight',
                 timeout: 3000,
             });
-            return; // function will stop executing once this happens
+            return;
         }
 
         setIsLoading(true)
 
-        setTimeout(() => {
-            setIsLoading(false)
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            const user = userCredential.user
+
+            await updateProfile(user, {
+                displayName: username
+            })
 
             iziToast.success({
                 title: 'Success!',
@@ -104,7 +115,49 @@ const SignUp = () => {
             })
 
             navigate('/')
-        }, 500)
+        } catch (error) {
+            iziToast.error({
+                title: 'Sign Up Failed',
+                message: error.message,
+                position: 'topRight',
+                timeout: 3000,
+            })
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    //for the google button
+    const googleSignUp = async () => {
+
+        if (isLoading === true) {
+            return
+        }
+
+        setIsLoading(true)
+
+        try {
+            const provider = new GoogleAuthProvider()
+            await signInWithPopup(auth, provider)
+
+            iziToast.success({
+                title: 'Success!',
+                message: 'Sign up Successful!',
+                position: 'topRight',
+                timeout: 3000,
+            })
+
+            navigate('/')
+        } catch (error) {
+            iziToast.error({
+                title: 'Sign Up Failed',
+                message: error.message,
+                position: 'topRight',
+                timeout: 3000,
+            })
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     return (
@@ -204,6 +257,7 @@ const SignUp = () => {
 
                             <button
                                 type="button"
+                                onClick={googleSignUp}
                                 className='group max-md:py-[7px] w-full py-[10px] border-[0.1px] border-gray-400 font-light text-gray-500 rounded-[5px] hover:-translate-y-1 cursor-pointer transition-all duration-300 ease flex items-center justify-center'
                             >
                                 <span className='w-[50px] h-full rounded-full overflow-hidden'>
