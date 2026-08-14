@@ -12,14 +12,20 @@ import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 
 
 const Login = () => {
 
+    //to track email change and password 
     const [email, setEmail] = useState('');
+
     const [password, setPassword] = useState('');
 
+    //for loading and to track password eye icon
     const [isLoading, setIsLoading] = useState(false);
+
     const [seePassword, setSeePassword] = useState(false);
 
+    //to navigate to the home page after login
     const navigate = useNavigate();
 
+    //function to track typing in mail, password typing and toggling of eye icon
     const emailTyping = (e) => {
         setEmail(e.target.value)
     }
@@ -32,6 +38,7 @@ const Login = () => {
         setSeePassword(!seePassword)
     }
 
+    //when the button with submit type is clicked
     const buttonClicked = async (e) => {
 
         e.preventDefault()

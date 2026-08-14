@@ -1,3 +1,5 @@
+//all the imports
+
 import React from 'react'
 import { Eye, EyeOff } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -14,33 +16,33 @@ import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 
 const SignUp = () => {
 
-    //these variables are for tracking the eye and eyeoff icons
-    const [seeCreatePassword, setSeeCreatePassword] = useState(false);
+    {/* these variables are for tracking the eye and eyeoff icons */}
+    const [seeCreatePassword, setSeeCreatePassword] = useState(false); //useState is to track anything that is bound to change
     const [seeConfirmPassword, setSeeConfirmPassword] = useState(false);
 
     {/* these are the functions that will be made onclick of the eye icon */ }
 
     //for toggling of create password icon
     const toggleCreatePassword = () => {
-        setSeeCreatePassword(!seeCreatePassword);
+        setSeeCreatePassword(!seeCreatePassword); //onclick, do this
     }
 
     //for toggling of confirm password icon
     const toggleConfirmPassword = () => {
-        setSeeConfirmPassword(!seeConfirmPassword);
+        setSeeConfirmPassword(!seeConfirmPassword); //onclick, do this
     }
 
     //tracking the input of the password
     const [password, setPassword] = useState('');
     const [isTypingPassword, setIsTypingPassword] = useState(false) //to check if the use is typing
 
-    const expectedLength = 8;
+    const expectedLength = 8; //the length variable for password
 
 
     //use a function that has the 'e' argument - 'e' is the typing event
     const checkPassword = (e) => {
         setPassword(e.target.value)
-        setIsTypingPassword(true)
+        setIsTypingPassword(true) //for the typing event, target value and set isTyping to true
     }
 
     //the errormessage for the password
@@ -68,13 +70,13 @@ const SignUp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate(); //used for navigation
 
-    //normal button
+    //normal button with submit type (remove the deafult event)
     const buttonClicked = async (e) => {
 
         e.preventDefault()
 
         if (isLoading === true) {
-            return
+            return //the function wont run at al is is loading is already true
         }
 
         if (!username.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
@@ -97,8 +99,10 @@ const SignUp = () => {
             return;
         }
 
-        setIsLoading(true)
+        setIsLoading(true) //let it become true so that the button can change color and icon
 
+
+        //use try catch because there might be an error
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password)
             const user = userCredential.user
@@ -127,7 +131,7 @@ const SignUp = () => {
         }
     }
 
-    //for the google button
+    //for the google button (use async await so that other functions can be running in the background)
     const googleSignUp = async () => {
 
         if (isLoading === true) {
@@ -137,7 +141,7 @@ const SignUp = () => {
         setIsLoading(true)
 
         try {
-            const provider = new GoogleAuthProvider()
+            const provider = new GoogleAuthProvider() //for google popup
             await signInWithPopup(auth, provider)
 
             iziToast.success({
