@@ -10,6 +10,8 @@ import { useAuth } from '../context/AuthContext';
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
 
+//new imports for add to cart
+import { useCart } from '../context/CartContext';
 
 
 const Nav = () => {
@@ -77,6 +79,12 @@ const Nav = () => {
       console.error(error)
     }
   }
+
+  //add to cart
+  const { cartItems, addToCart } = useCart();
+
+  //what does reduce do
+  const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <div className='relative'>
@@ -163,11 +171,11 @@ const Nav = () => {
                 className='flex items-center gap-[7px] group'
                 onClick={clickedCartLink}
               >
-                <span className="h-[25px] w-[25px] rounded-full bg-[var(--royalblue)] p-[5px] flex items-center justify-center text-[var(--white)] group-hover:text-gray-200 group-hover:bg-[var(--royalblue-hover)]">1</span>
+                <span className="h-[25px] w-[25px] rounded-full bg-[var(--royalblue)] p-[5px] flex items-center justify-center text-[var(--white)] group-hover:text-gray-200 group-hover:bg-[var(--royalblue-hover)]">{cartItems.length}</span>
                 <Handbag className='text-[var(--white)] group-hover:text-gray-200 h-10 w-10 max-md:h-7 max-md:w-7' />
                 <div className='max-md:hidden flex flex-col ml-[4px]'>
                   <span className="text-[var(--white)] group-hover:text-gray-200 font-light text-sm">Your Cart</span>
-                  <span className="text-[var(--white)] group-hover:text-gray-200 font-bold text-sm">$ 39.99 USD</span>
+                  <span className="text-[var(--white)] group-hover:text-gray-200 font-bold text-sm">$ {cartTotal.toFixed(2)} USD</span>
                 </div>
               </Link>
 
@@ -756,49 +764,50 @@ const Nav = () => {
               <X size={22} className='hover:text-red-600 cursor-pointer text-gray-500' onClick={notClickedCartLink} />
             </div>
 
-            {/* the div that will show when there is nothing in the cart*/}
-            <div className="hidden flex flex-col justify-center items-center gap-[30px] py-[60px] px-[25px]">
-              <p className='text-gray-400'>No items found.</p>
-              <Link to='' className='capitalize px-[20px] py-[15px] bg-[var(--royalblue)] text-white text-sm rounded-[25px] hover:bg-[var(--royalblue-hover)] transition-all ease duration-300 hover:-translate-y-1'>start shopping</Link>
-            </div>
+            {/* if cart is empty, show this. otherwise, show the list of items */}
+            {cartItems.length === 0 ? (
+              <div className="flex flex-col justify-center items-center gap-[30px] py-[60px] px-[25px]">
+                <p className='text-gray-400'>No items found.</p>
+                <Link to='/' onClick={notClickedCartLink} className='capitalize px-[20px] py-[15px] bg-[var(--royalblue)] text-white text-sm rounded-[25px] hover:bg-[var(--royalblue-hover)] transition-all ease duration-300 hover:-translate-y-1'>start shopping</Link>              </div>
+            ) : (
+              <div className="flex flex-col gap-[10px] w-full pb-[15px]">
 
-            {/* the div that wil show when there is atleast one item in cart */}
-            <div className="flex flex-col gap-[10px] w-full pb-[15px]">
-              <div className="px-[25px] flex justify-between items-start w-full border-b-[0.1px] border-gray-300 px-[25px] pb-[30px]">
-                {/* image and name*/}
-                <div className="flex items-start gap-[15px]">
-                  <div className="w-[100px] h-[100px] border-[0.1px] rounded-[15px] border-gray-500 overflow-hidden hover:border-[var(--royalblue)] hover:border-[1px] transition-colors ease-in-out cursor-pointer">
-                    <img src={sneakers} alt="" />
+                {/* one block per item in the cart, instead of one hardcoded item */}
+                {cartItems.map((item) => (
+                  <div key={item.id} className="px-[25px] flex justify-between items-start w-full border-b-[0.1px] border-gray-300 pb-[30px]">
+                    {/* image and name*/}
+                    <div className="flex items-start gap-[15px]">
+                      <div className="w-[100px] h-[100px] border-[0.1px] rounded-[15px] border-gray-500 overflow-hidden hover:border-[var(--royalblue)] hover:border-[1px] transition-colors ease-in-out cursor-pointer">
+                        <img src={item.image} alt="" />
+                      </div>
+                      {/* text */}
+                      <div className="flex flex-col">
+                        <h3 className='text-[16px] font-semibold capitalize'>{item.name}</h3>
+                        <span className="text-sm text-gray-700">$ {item.price} USD</span>
+
+                        <button className="text-sm text-[var(--royalblue)] mt-[10px] text-white bg-red-500 text-center py-[10px] px-[20px] rounded-[25px] w-fit hover:bg-red-700 cursor-pointer hover:-translate-y-1 transition-all ease-in-out duration-300">Remove</button>
+                      </div>
+                    </div>
+
+                    <div className="rounded-[25px] p-[3px] border-[0.1px] border-gray-500 w-[100px]">
+                      <input type="number" name="" id="" defaultValue={item.quantity} className='w-full h-full outline-none px-[10px] py-[3px]' />
+                    </div>
+
                   </div>
-                  {/* text */}
-                  <div className="flex flex-col">
-                    <h3 className='text-[16px] font-semibold capitalize'>vintage wall decor</h3>
-                    <span className="text-sm text-gray-700">$ 82.00 USD</span>
+                ))}
 
-                    <span className="text-[14px]">color: <span className="text-sm text-black">Wood</span>
-                    </span>
-
-                    <button className="text-sm text-[var(--royalblue)] mt-[10px] text-white bg-red-500 text-center py-[10px] px-[20px] rounded-[25px] w-fit hover:bg-red-700 cursor-pointer hover:-translate-y-1 transition-all ease-in-out duration-300">Remove</button>
-                  </div>
+                <div className="flex justify-between items-center w-full px-[25px] py-[10px]">
+                  <h3 className="text-[16px] text-gray-500 capitalize">subtotal: </h3>
+                  <span className="text-[16px] font-semibold text-black">$ {cartTotal.toFixed(2)} USD</span>
                 </div>
-
-                <div className="rounded-[25px] p-[3px] border-[0.1px] border-gray-500 w-[100px]">
-                  <input type="number" name="" id="" defaultValue={1} className='w-full h-full outline-none px-[10px] py-[3px]' />
-                </div>
-
+                <Link
+                  to='/checkout'
+                  className='w-[90%] self-center flex items-center justify-center capitalize text-white border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[12px] rounded-[25px] text-sm transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)] font-semibold'
+                >
+                  continue to checkout
+                </Link>
               </div>
-
-              <div className="flex justify-between items-center w-full px-[25px] py-[10px]">
-                <h3 className="text-[16px] text-gray-500 capitalize">subtotal: </h3>
-                <span className="text-[16px] font-semibold text-black">$ 82.00 USD</span>
-              </div>
-              <Link
-                to='/checkout'
-                className='w-[90%] self-center flex items-center justify-center capitalize text-white border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[12px] rounded-[25px] text-sm transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)] font-semibold'
-              >
-                continue to checkout
-              </Link>
-            </div>
+            )}
 
 
           </div>

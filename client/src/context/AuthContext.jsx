@@ -7,7 +7,7 @@ const AuthContext = createContext();
 
 {/* the provider component(actual code in the box/ context) */ }
 
-//the chikdren prop represents anything that will be in it later
+//the children prop represents anything that will be in it later
 export const AuthProvider = ({ children }) => {
 
     //create the traker for the user
