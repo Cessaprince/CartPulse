@@ -9,17 +9,15 @@ const CartContext = createContext();
 //the children prop represents anything that will be in it later
 export const CartProvider = ({ children }) => {
 
-    /*get the currently logged in user from AuthContext, so we know when
-    someone logs out and can react to it
-    */
+    /* get the currently logged in user from AuthContext, so we know when
+    someone logs out and can react to it */
     const { user } = useAuth();
 
     //create the tracker for what's in the cart, starts as an empty array
     const [cartItems, setCartItems] = useState([]);
 
-    /* whenever user changes (login, logout, or the initial null while
-    firebase figures out who's logged in), check: if there's no user,
-    clear the cart. this stops one person's cart leaking into the
+    /* whenever user changes; if there's no user,
+    clear the cart. this stops one person's cart from getting into the
     next person's session on the same browser */
     useEffect(() => {
         if (!user) {
@@ -30,12 +28,10 @@ export const CartProvider = ({ children }) => {
     //takes one param: the product being added (no quantity yet, it's fresh from the page)
     const addToCart = (product) => {
 
-        /* using the updater form (prevItems => ...) instead of reading cartItems
-        directly, so we always work with the latest state, even if this fires
-        twice quickly (e.g. double-click) */
+        /* setCartitems to have the function that checks if the item is in cart or not*/
         setCartItems((prevItems) => {
 
-            /*the core question: does this product already exist in the cart?
+            /* does this product already exist in the cart?
             .some() just gives us true/false */
             const alreadyInCart = prevItems.some(
                 (item) => item.id === product.id
@@ -57,13 +53,32 @@ export const CartProvider = ({ children }) => {
                 /*it doesn't exist yet, so spread the existing array and append
                 the new product, but give it quantity: 1 since the incoming
                 product object has no quantity field of its own */
-                return [...prevItems, { ...product, quantity: 1 }]
+                return [...prevItems, { ...product, quantity: 1 }] //list of products arrays and then the new product is spread and guven the quantity of 1
             }
         })
     }
 
+    /* takes the item's id and the new quantity typed into the input, and
+    updates just that one item quantity, leaving everything else like that */
+    const updateQuantity = (id, newQuantity) => {
+        setCartItems((prevItems) =>
+            prevItems.map((item) =>
+                item.id === id
+                    ? { ...item, quantity: newQuantity }
+                    : item
+            )
+        );
+    };
+
+    //removing an item from cart using fiter - it takes what is true and drops what is false
+    const removeFromCart = (id) => {
+        setCartItems((prevItems) =>
+            prevItems.filter((item) => item.id !== id) //keeps any item that is not equal w[to what is being removed
+        );
+    };
+
     return (
-        <CartContext.Provider value={{ cartItems, addToCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, updateQuantity, removeFromCart }}>
             {children}
         </CartContext.Provider>
     )

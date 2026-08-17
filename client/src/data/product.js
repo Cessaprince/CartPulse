@@ -8,15 +8,14 @@ import sneakers from "../images/product-images/sneakers.png";
 import wallDecor from "../images/product-images/vintage-decor-wall.webp";
 import naturalPlant from "../images/product-images/natural-plant.png";
 
-/* shared product data — one source of truth, reused across Home, Shop,
-product-detail, cart, anywhere a product needs to be displayed */
+/* shared product data used across Home, Shop, product-detail, cart, anywhere a product needs to be displayed */
 const products = [
   {
     id: "basic-gray-tshirt",
     name: "Basic gray t-shirt",
     category: "Fashion",
     price: 29.99,
-    originalPrice: 39.99,
+    originalPrice: 39.99, //this is the price that has del
     image: grayShirt,
   },
   {

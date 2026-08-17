@@ -1,4 +1,4 @@
-
+//standard imports
 import React from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
@@ -18,7 +18,7 @@ import wallClock from '../images/product-images/wood-wall-clock.png'
 import ceramicVase from '../images/product-images/ceramic-vases.png'
 import naturalPlant from '../images/product-images/natural-plant.png'
 
-//import the products object from product.js
+//import the products list of object from product.js
 import products from '../data/product.js';
 
 //import the useCart context

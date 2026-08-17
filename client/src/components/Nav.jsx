@@ -70,7 +70,7 @@ const Nav = () => {
   const { user } = useAuth() //useauth() is the function that has usecontext that has authcontext return { user }
   const navigate = useNavigate() //to navigate 
 
-  //function to handle logging out
+  //function to handle logging out(should use asyn await so that othervthings can be going on in the browser)
   const handleLogout = async () => {
     try {
       await signOut(auth)
@@ -81,9 +81,9 @@ const Nav = () => {
   }
 
   //add to cart
-  const { cartItems, addToCart } = useCart();
+  const { cartItems, addToCart, updateQuantity, removeFromCart } = useCart();
 
-  //what does reduce do
+  //reduce has two params: accumulator, element looked at and then starting value (in this case 0)
   const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
@@ -785,12 +785,22 @@ const Nav = () => {
                         <h3 className='text-[16px] font-semibold capitalize'>{item.name}</h3>
                         <span className="text-sm text-gray-700">$ {item.price} USD</span>
 
-                        <button className="text-sm text-[var(--royalblue)] mt-[10px] text-white bg-red-500 text-center py-[10px] px-[20px] rounded-[25px] w-fit hover:bg-red-700 cursor-pointer hover:-translate-y-1 transition-all ease-in-out duration-300">Remove</button>
+                        <button 
+                        /* use the arrow function to pass it since it has an arguement */
+                        onClick={() => removeFromCart(item.id)}
+                        className="text-sm text-[var(--royalblue)] mt-[10px] text-white bg-red-500 text-center py-[10px] px-[20px] rounded-[25px] w-fit hover:bg-red-700 cursor-pointer hover:-translate-y-1 transition-all ease-in-out duration-300"
+                        >Remove
+                        </button>
                       </div>
                     </div>
 
                     <div className="rounded-[25px] p-[3px] border-[0.1px] border-gray-500 w-[100px]">
-                      <input type="number" name="" id="" defaultValue={item.quantity} className='w-full h-full outline-none px-[10px] py-[3px]' />
+                      <input 
+                      type="number" 
+                      name="" id="" 
+                      defaultValue={item.quantity} 
+                      onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
+                      className='w-full h-full outline-none px-[10px] py-[3px]' />
                     </div>
 
                   </div>
@@ -800,12 +810,12 @@ const Nav = () => {
                   <h3 className="text-[16px] text-gray-500 capitalize">subtotal: </h3>
                   <span className="text-[16px] font-semibold text-black">$ {cartTotal.toFixed(2)} USD</span>
                 </div>
-                <Link
-                  to='/checkout'
+                <button
+                  type='button'
                   className='w-[90%] self-center flex items-center justify-center capitalize text-white border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[12px] rounded-[25px] text-sm transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)] font-semibold'
                 >
                   continue to checkout
-                </Link>
+                </button>
               </div>
             )}
 
