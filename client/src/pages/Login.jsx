@@ -115,7 +115,7 @@ const Login = () => {
     }
 
     return (
-        <div className='flex justify-center items-center min-h-screen'>
+        <div className='flex justify-center items-center min-h-screen max-md:px-[30px]'>
 
             <section className='w-[450px] h-auto bg-white shadow border-[0.1px] border-gray-200 p-[30px] rounded-[10px]'>
 

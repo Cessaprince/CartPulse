@@ -52,6 +52,13 @@ const Home = () => {
         }
 
         addToCart(product);
+
+        iziToast.success({
+            title: 'Added to cart!',
+            message: `${product.name} was added to your cart.`,
+            position: 'topRight',
+            timeout: 2000,
+        });
     };
 
     return (
