@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from '../components/Nav'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import { ChevronRight, Shirt } from 'lucide-react'
 import grayShirt from '../images/product-images/gray-tshirt.png'
@@ -15,15 +15,22 @@ const Shop = () => {
             <section className='bg-gray-100 py-[22px]'>
                 <div className="container">
                     <div className="flex gap-[7px] items-center">
-                        <Link to='/' className='capitalize text-sm text-gray-500 hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
-                            home
-                        </Link>
+                        <NavLink to='/'
+                            className={
+                                ({ isActive }) =>
+                                    `capitalize text-sm transition duration-300 ease-in-out ${isActive ? 'text-[var(--royalblue)]' : ' text-gray-500 hover:text-[var(--royalblue)]'}`
+                            }>              home
+                        </NavLink>
 
                         <span className='text-gray-500'>/</span>
 
-                        <Link to='/shop' className='capitalize text-sm text-gray-500 hover:text-[var(--royalblue)] transition duration-300 ease-in-out'>
+                        <NavLink to='/shop'
+                            className={
+                                ({ isActive }) =>
+                                    `capitalize text-sm transition duration-300 ease-in-out ${isActive ? 'text-[var(--royalblue)]' : ' text-gray-500 hover:text-[var(--royalblue)]'}`
+                            }>
                             shop
-                        </Link>
+                        </NavLink>
 
                     </div>
                 </div>
@@ -60,7 +67,7 @@ const Shop = () => {
                                 {/* products*/}
 
                                 <div className="max-md:order-3 flex flex-col w-full gap-[10px]">
-                                    
+
                                     {/* products 1*/}
                                     <div className="flex flex-col gap-[5px] w-full">
                                         <h3 className='font-bold text-[12px] border-b-[0.1px] border-gray-300 py-[15px]'>Products by category</h3>

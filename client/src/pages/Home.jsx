@@ -3,7 +3,7 @@ import React from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { ChevronRight, Shirt, Star, Amphora, Birdhouse, Van } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import hoodie from '../images/product-images/basic-hoodies.webp'
 import grayShirt from '../images/product-images/gray-tshirt.png'
 import grayCoat from '../images/product-images/gray-coat.webp'
@@ -41,7 +41,11 @@ const Home = () => {
 
 
     /* only adds to cart if someone is logged in, otherwise toasts them instead of silently doing nothing */
-    const handleAddToCart = (product) => {
+    const handleAddToCart = (e, product) => {
+
+        //use this when you don't want inner clickable to affect the outer one
+        e.stopPropagation()
+
         if (!user) {
             iziToast.warning({
                 title: 'Please log in',
@@ -60,6 +64,9 @@ const Home = () => {
             timeout: 2000,
         });
     };
+
+    //initialize useNavigate() and use it to take each product to the product detail page
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -181,7 +188,14 @@ const Home = () => {
                     <div className="grid grid-cols-4 max-md:grid-cols-2 gap-[40px] max-md:gap-[25px] py-[10px]">
 
                         {products.map((product) => (
-                            <div key={product.id} data-id={product.id} className="group cursor-pointer flex flex-col pb-[18px] overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1">
+                            <div
+                                key={product.id}
+                                data-id={product.id}
+
+                                /* navogate to the product details page*/
+
+                                onClick={() => navigate(`/shop/product/${product.id}`)}
+                                className="group cursor-pointer flex flex-col pb-[18px] overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1">
                                 <div className="w-full h-[80%] overflow-hidden">
                                     <img src={product.image} alt="" className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105' />
                                 </div>
@@ -245,18 +259,22 @@ const Home = () => {
                     <div className="w-full overflow-x-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                         <div className="flex items-stretch gap-[40px] py-[10px]">
 
-                            {products.map((product) => (
-                                <div key={product.id} data-id={product.id} className="min-w-[25%] max-w-[25%] max-md:min-w-[60%] max-md:max-w-[60%] pb-[30px]  group cursor-pointer flex flex-col overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1 relative">
+                            {products.slice(0, 6).map((product) => (
+                                <div
+                                    key={product.id}
+                                    data-id={product.id}
+                                    onClick={() => navigate(`/shop/product/${product.id}`)}
+                                    className="min-w-[25%] max-w-[25%] max-md:min-w-[60%] max-md:max-w-[60%] pb-[30px]  group cursor-pointer flex flex-col overflow-hidden rounded-[20px] border-[0.1px] border-gray-100 h-auto transition-transform duration-300 hover:-translate-y-1 relative">
                                     <div className="w-full h-[60%] overflow-hidden">
                                         <img src={product.image} alt="" className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 relative' />
                                     </div>
-                                    <button onClick={() => handleAddToCart(product)} className='absolute right-4 mt-[15px] flex items-center capitalize  w-fit border-[0.1px] border-gray-300 outline-none py-[10px] px-[15px] bg-[var(--white)] rounded-[25px] text-xs'>add to cart</button>
+                                    <button onClick={(e) => handleAddToCart(e, product)} className='absolute right-4 mt-[15px] flex items-center capitalize  w-fit border-[0.1px] border-gray-300 outline-none py-[10px] px-[15px] bg-[var(--white)] rounded-[25px] text-xs'>add to cart</button>
 
                                     <div className='flex flex-col gap-[5px] mt-[20px] px-[30px]'>
                                         <h3 className='font-semibold text-[18px] max-md:text-[16px] capitalize group-hover:text-[var(--royalblue)]'>{product.name}</h3>
                                         <span className='font-light text-gray-500 text-[16px] max-md:text-[14px]'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui qu</span>
 
-                                        <button onClick={() => handleAddToCart(product)} className='mt-[15px] flex items-center capitalize text-white w-fit border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[15px] px-[18px] rounded-[25px] text-xs transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)]'>add to cart</button>
+                                        <button onClick={(e) => handleAddToCart(e, product)} className='mt-[15px] flex items-center capitalize text-white w-fit border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[15px] px-[18px] rounded-[25px] text-xs transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)]'>add to cart</button>
 
                                     </div>
                                 </div>
@@ -310,7 +328,11 @@ const Home = () => {
                             <div className="flex flex-col gap-[20px]">
 
                                 {/* each product */}
-                                <div data-id='11-inch-indoor-plant' className="flex gap-[15px] items-center group cursor-pointer">
+                                <div
+                                    data-id='11-inch-indoor-plant'
+                                    className="flex gap-[15px] items-center group cursor-pointer"
+                                    onClick={() => navigate('/shop/product/11-inch-indoor-plant')}
+                                >
                                     <div className="w-[100px] h-[100px] rounded-[10px] overflow-hidden transition-transform duration-300 group-hover:scale-105">
                                         <img src={indoorPlant11} alt="" />
                                     </div>
@@ -326,7 +348,10 @@ const Home = () => {
 
                                 </div>
 
-                                <div data-id='vintage-wall-decor' className="flex gap-[15px] items-center group cursor-pointer">
+                                <div
+                                    data-id='vintage-wall-decor'
+                                    onClick={() => navigate('/shop/product/vintage-wall-decor')}
+                                    className="flex gap-[15px] items-center group cursor-pointer">
                                     <div className="w-[100px] h-[100px] rounded-[10px] overflow-hidden transition-transform duration-300 group-hover:scale-105">
                                         <img src={wallDecor} alt="" />
                                     </div>
@@ -342,7 +367,10 @@ const Home = () => {
 
                                 </div>
 
-                                <div data-id='dinnerware-sets' className="flex gap-[15px] items-center group cursor-pointer">
+                                <div
+                                    data-id='dinnerware-sets'
+                                    onClick={() => navigate('/shop/product/dinnerware-sets')}
+                                    className="flex gap-[15px] items-center group cursor-pointer">
                                     <div className="w-[100px] h-[100px] rounded-[10px] overflow-hidden transition-transform duration-300 group-hover:scale-105">
                                         <img src={dinnerWareSets} alt="" />
                                     </div>
@@ -365,7 +393,12 @@ const Home = () => {
                             <div className="flex flex-col gap-[20px]">
 
                                 {/* each product */}
-                                <div data-id='solid-wood-wall-clock' className="flex gap-[15px] items-center group cursor-pointer">
+                                <div
+                                    data-id='solid-wood-wall-clock'
+                                    className="flex gap-[15px] items-center group cursor-pointer"
+                                    onClick={() => navigate('/shop/product/solid-wood-wall-clock')}
+
+                                >
                                     <div className="w-[100px] h-[100px] rounded-[10px] overflow-hidden transition-transform duration-300 group-hover:scale-105">
                                         <img src={wallClock} alt="" />
                                     </div>
@@ -381,7 +414,9 @@ const Home = () => {
 
                                 </div>
 
-                                <div data-id='ceramic-flower-vases' className="flex gap-[15px] items-center group cursor-pointer">
+                                <div onClick={() => navigate('/shop/product/ceramic-flower-vases')}
+                                    data-id='ceramic-flower-vases'
+                                    className="flex gap-[15px] items-center group cursor-pointer">
                                     <div className="w-[100px] h-[100px] rounded-[10px] overflow-hidden transition-transform duration-300 group-hover:scale-105">
                                         <img src={ceramicVase} alt="" />
                                     </div>
@@ -397,7 +432,11 @@ const Home = () => {
 
                                 </div>
 
-                                <div data-id='12-inch-natural-plant' className="flex gap-[15px] items-center group cursor-pointer">
+                                <div
+                                    onClick={() => navigate('/shop/product/12-inch-natural-plant')}
+
+                                    data-id='12-inch-natural-plant'
+                                    className="flex gap-[15px] items-center group cursor-pointer">
                                     <div className="w-[100px] h-[100px] rounded-[10px] overflow-hidden transition-transform duration-300 group-hover:scale-105">
                                         <img src={naturalPlant} alt="" />
                                     </div>
@@ -420,7 +459,9 @@ const Home = () => {
                             <div className="flex flex-col gap-[20px]">
 
                                 {/* each product */}
-                                <div data-id='basic-gray-tshirt' className="flex gap-[15px] items-center group cursor-pointer">
+                                <div onClick={() => navigate('/shop/product/basic-gray-tshirt')}
+
+                                    data-id='basic-gray-tshirt' className="flex gap-[15px] items-center group cursor-pointer">
                                     <div className="w-[100px] h-[100px] rounded-[10px] overflow-hidden transition-transform duration-300 group-hover:scale-105">
                                         <img src={grayShirt} alt="" />
                                     </div>
@@ -436,7 +477,7 @@ const Home = () => {
 
                                 </div>
 
-                                <div data-id='white-sneakers' className="flex gap-[15px] items-center group cursor-pointer">
+                                <div onClick={() => navigate('/shop/product/white-sneakers')} data-id='white-sneakers' className="flex gap-[15px] items-center group cursor-pointer">
                                     <div className="w-[100px] h-[100px] rounded-[10px] overflow-hidden transition-transform duration-300 group-hover:scale-105">
                                         <img src={sneakers} alt="" />
                                     </div>
@@ -452,7 +493,7 @@ const Home = () => {
 
                                 </div>
 
-                                <div data-id='pink-sweater' className="flex gap-[15px] items-center group cursor-pointer">
+                                <div onClick={() => navigate('/shop/product/pink-sweater')}  data-id='pink-sweater' className="flex gap-[15px] items-center group cursor-pointer">
                                     <div className="w-[100px] h-[100px] rounded-[10px] overflow-hidden transition-transform duration-300 group-hover:scale-105">
                                         <img src={pinkSweater} alt="" />
                                     </div>

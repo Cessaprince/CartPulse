@@ -8,6 +8,8 @@ import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import { AuthProvider } from './context/AuthContext'
 import { CartProvider } from './context/CartContext'
+import ProductDetails from './pages/ProductDetails'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
   return (
@@ -19,14 +21,17 @@ const App = () => {
         {/* cartprovider goes inside authprovider since it calls useAuth() internally */}
         <CartProvider>
           <BrowserRouter>
-            <Routes>
-              <Route index element={<Home />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path='/contact-us' element={<Contact />} />
-              <Route path='/blog' element={<Blog />}></Route>
-              <Route path='/login' element={<Login />}></Route>
-              <Route path='/signup' element={<SignUp />}></Route>
-            </Routes>
+<ScrollToTop/>
+              <Routes>
+                <Route index element={<Home />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path='/contact-us' element={<Contact />} />
+                <Route path='/blog' element={<Blog />}></Route>
+                <Route path='/login' element={<Login />}></Route>
+                <Route path='/signup' element={<SignUp />}></Route>
+                <Route path='/shop/product/:productId' element={<ProductDetails />}></Route>
+              </Routes>
+
           </BrowserRouter>
         </CartProvider>
       </AuthProvider>

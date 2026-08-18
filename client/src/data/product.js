@@ -7,6 +7,8 @@ import ceramicVase from "../images/product-images/ceramic-vases.png";
 import sneakers from "../images/product-images/sneakers.png";
 import wallDecor from "../images/product-images/vintage-decor-wall.webp";
 import naturalPlant from "../images/product-images/natural-plant.png";
+import dinnerWareSets from "../images/product-images/dinnerware-sets.png";
+import pinkSweater from "../images/product-images/pink-shirt.webp";
 
 /* shared product data used across Home, Shop, product-detail, cart, anywhere a product needs to be displayed */
 const products = [
@@ -15,7 +17,7 @@ const products = [
     name: "Basic gray t-shirt",
     category: "Fashion",
     price: 29.99,
-    originalPrice: 39.99, //this is the price that has del
+    originalPrice: 39.99,
     image: grayShirt,
   },
   {
@@ -73,6 +75,22 @@ const products = [
     price: 29.99,
     originalPrice: 39.99,
     image: naturalPlant,
+  },
+  {
+    id: "dinnerware-sets",
+    name: "dinnerware sets",
+    category: "decoration",
+    price: 29.99,
+    originalPrice: 39.99,
+    image: dinnerWareSets,
+  },
+  {
+    id: "pink-sweater",
+    name: "pink sweater",
+    category: "Fashion",
+    price: 29.99,
+    originalPrice: 39.99,
+    image: pinkSweater,
   },
 ];
 
