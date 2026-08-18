@@ -5,6 +5,7 @@ import googleLogo from '../images/page-images/google-logo.png'
 import { useState } from 'react'
 import iziToast from 'izitoast'
 import 'izitoast/dist/css/iziToast.min.css'
+import shoppingCart from '../images/page-images/shoppingCart.jpg'
 
 //for the firebase authentication
 import { auth } from '../firebase'
@@ -115,11 +116,14 @@ const Login = () => {
     }
 
     return (
-        <div className='flex justify-center items-center min-h-screen max-md:px-[30px]'>
+        <div className='flex justify-center items-center min-h-screen max-lg:px-[30px]'>
 
-            <section className='w-[450px] h-auto bg-white shadow border-[0.1px] border-gray-200 p-[30px] rounded-[10px]'>
+            <section className='w-[900px] flex h-[450px] bg-white shadow border-[0.1px] border-gray-200 rounded-[15px]'>
+                <div className="w-[50%] overflow-hidden rounded-l-[15px] max-md:hidden">
+                    <img src={shoppingCart} alt="" className='w-full h-full object-cover'/>
 
-                <form action="" className='w-full flex flex-col gap-[15px] '>
+                </div>
+                <form action="" className='w-[50%] max-md:w-full flex flex-col gap-[15px] p-[40px]'>
                     <h1 className='font-bold text-[22px] text-center'>Login</h1>
                     <input
                         type="email"
