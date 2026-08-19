@@ -3,26 +3,58 @@ import { ShoppingBag, X } from 'lucide-react'
 import { useCart } from '../context/CartContext';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const Checkout = () => {
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     //add to cart
     const { cartItems, addToCart, updateQuantity, removeFromCart, clearCart } = useCart();
 
-    //reduce has two params: accumulator, element looked at and then starting value (in this case 0)
+    //reduce has two parameters: accumulator, element looked at and then starting value (in this case 0)
     const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
-    //controls whether the payment-success popup is showing
+    //controls whether the payment successful popup is showing
     const [paymentSuccessful, setPaymentSuccessful] = useState(false);
 
-    //runs when "make payments" is clicked
+    //tracking the states for every input
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
+    const [cardName, setCardName] = useState('');
+    const [expiryDate, setExpiryDate] = useState('');
+    const [securityCode, setSecurityCode] = useState('');
+    const [postalCode, setPostalCode] = useState('');
+
+    //the function to run when the 'make payment' is clicked'
     const handlePayment = () => {
+
+        /* check every field at once using .trim() and if anyone fails, return the error message */
+        if (
+            !email.trim() ||
+            !phone.trim() ||
+            !address.trim() ||
+            !cardName.trim() ||
+            !expiryDate.trim() ||
+            !securityCode.trim() ||
+            !postalCode.trim()
+        ) {
+            iziToast.error({
+                title: 'Missing details',
+                message: 'Please fill in all fields before making payment.',
+                position: 'topRight',
+                timeout: 3000,
+            });
+            return; //stops the function here, payment popup never opens
+        }
+
+        //show the successful pop-up if everything is filled
         setPaymentSuccessful(true);
     };
 
-    //runs when "continue shopping" is clicked, it empties the cart and sends user home
+    //runs when "continue shopping" is clicked as it empties the cart and sends user home
     const continueShopping = () => {
         clearCart();
         setPaymentSuccessful(false);
@@ -40,17 +72,29 @@ const Checkout = () => {
                     {/* form field*/}
                     <form action="" className="flex flex-col gap-[20px] w-[50%] max-md:w-full">
 
-                        {/* account deatils*/}
+                        {/* account details*/}
                         <div className="flex flex-col gap-[15px] pl-[100px] pr-[20px] pb-[50px] max-md:px-[60px] border-b-gray-300 border-b-[0.1px]">
                             <h3 className="text-[18px] capitalize font-semibold">1. account details</h3>
                             <div className="flex items-center gap-[20px] w-full">
                                 <div className="flex flex-col w-full gap-[5px]">
                                     <span className='text-gray-600 text-sm capitalize'>email ID</span>
-                                    <input type="email" name="" id="" placeholder='example@gmail.com' className='outline-none py-[10px] px-[15px] bg-gray-100  rounded-[7px] border-gray-300 border-[0.1px] text-sm' />
+                                    <input
+                                        type="email"
+                                        placeholder='example@gmail.com'
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        className='outline-none py-[10px] px-[15px] bg-gray-100  rounded-[7px] border-gray-300 border-[0.1px] text-sm'
+                                    />
                                 </div>
                                 <div className="flex flex-col w-full gap-[5px]">
                                     <span className='text-gray-600 text-sm capitalize'>mobile number</span>
-                                    <input type="tel" name="" id="" placeholder='0807-000-0000' className='outline-none py-[10px] px-[15px] bg-gray-100  rounded-[7px] border-gray-300 border-[0.1px] text-sm' />
+                                    <input
+                                        type="tel"
+                                        placeholder='0807-000-0000'
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        className='outline-none py-[10px] px-[15px] bg-gray-100  rounded-[7px] border-gray-300 border-[0.1px] text-sm'
+                                    />
                                 </div>
 
                             </div>
@@ -59,7 +103,13 @@ const Checkout = () => {
                         {/* delivery address*/}
                         <div className="flex flex-col gap-[15px] pl-[100px] pr-[20px] pb-[50px] max-md:px-[60px] border-b-gray-300 border-b-[0.1px]">
                             <h3 className="text-[18px] capitalize font-semibold">2. Delivery details</h3>
-                            <input type="text" name="" id="" placeholder='Plot 221 deeper life bible church road, rivers state university, mile3, port-harcourt' className='w-full outline-none py-[10px] px-[15px] bg-gray-100 capitalize rounded-[7px] border-gray-300 border-[0.1px] text-sm' />
+                            <input
+                                type="text"
+                                placeholder='Plot 221 deeper life bible church road, rivers state university, mile3, port-harcourt'
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
+                                className='w-full outline-none py-[10px] px-[15px] bg-gray-100 capitalize rounded-[7px] border-gray-300 border-[0.1px] text-sm'
+                            />
 
                         </div>
 
@@ -68,21 +118,44 @@ const Checkout = () => {
                             <h3 className="text-[18px] capitalize font-semibold">3. payment details</h3>
                             <div className="flex flex-col w-full gap-[5px]">
                                 <span className='text-gray-600 text-sm capitalize'>name on credt card</span>
-                                <input type="text" name="" id="" placeholder='enter fullname on card' className='w-full outline-none py-[10px] px-[15px] bg-gray-100 capitalize rounded-[7px] border-gray-300 border-[0.1px] text-sm' />
+                                <input
+                                    type="text"
+                                    placeholder='enter fullname on card'
+                                    value={cardName}
+                                    onChange={(e) => setCardName(e.target.value)}
+                                    className='w-full outline-none py-[10px] px-[15px] bg-gray-100 capitalize rounded-[7px] border-gray-300 border-[0.1px] text-sm'
+                                />
                             </div>
                             <div className="flex items-center gap-[20px] w-full max-md:flex-col">
                                 <div className="flex flex-col w-full gap-[5px]">
                                     <span className='text-gray-600 text-sm capitalize'>expiry date</span>
 
-                                    <input type='month' name="" id="" className='outline-none py-[10px] px-[15px] bg-gray-100  rounded-[7px] border-gray-300 border-[0.1px] text-sm' />
+                                    <input
+                                        type='month'
+                                        value={expiryDate}
+                                        onChange={(e) => setExpiryDate(e.target.value)}
+                                        className='outline-none py-[10px] px-[15px] bg-gray-100  rounded-[7px] border-gray-300 border-[0.1px] text-sm'
+                                    />
                                 </div>
                                 <div className="flex flex-col w-full gap-[5px]">
                                     <span className='text-gray-600 text-sm capitalize'>security code</span>
-                                    <input type="number" name="" id="" placeholder='000' className='outline-none py-[10px] px-[15px] bg-gray-100  rounded-[7px] border-gray-300 border-[0.1px] text-sm' />
+                                    <input
+                                        type="number"
+                                        placeholder='000'
+                                        value={securityCode}
+                                        onChange={(e) => setSecurityCode(e.target.value)}
+                                        className='outline-none py-[10px] px-[15px] bg-gray-100  rounded-[7px] border-gray-300 border-[0.1px] text-sm'
+                                    />
                                 </div>
                                 <div className="flex flex-col w-full gap-[5px]">
                                     <span className='text-gray-600 text-sm capitalize'>poster code</span>
-                                    <input type="text" name="" id="" placeholder='UK' className='outline-none py-[10px] px-[15px] bg-gray-100  rounded-[7px] border-gray-300 border-[0.1px] text-sm' />
+                                    <input
+                                        type="text"
+                                        placeholder='UK'
+                                        value={postalCode}
+                                        onChange={(e) => setPostalCode(e.target.value)}
+                                        className='outline-none py-[10px] px-[15px] bg-gray-100  rounded-[7px] border-gray-300 border-[0.1px] text-sm'
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -156,7 +229,7 @@ const Checkout = () => {
                 </div>
 
                 {paymentSuccessful && (
-                    <div className='fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm px-[15px]'>
+                    <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-[15px]'>
                         <div
                             className='bg-[var(--white)] rounded-[15px] flex flex-col items-center gap-[20px] w-full max-w-[400px] shadow-lg p-[40px]'
                             onClick={(e) => e.stopPropagation()}

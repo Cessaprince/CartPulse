@@ -76,7 +76,7 @@ const Login = () => {
         } catch (error) {
             iziToast.error({
                 title: 'Login Failed',
-                message: error.message,
+                message: error.code.split('/')[1].toUpperCase(),
                 position: 'topRight',
                 timeout: 3000,
             })
