@@ -462,7 +462,7 @@ const Nav = () => {
           {showJoinUs && (
             user ? (
               <div className='w-full flex flex-col gap-[15px] text-white text-sm'>
-                <Link to='/cart' className='group flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
+                <Link onClick={clickedCartLink} className='group flex items-center gap-[5px] hover:text-[var(--royalblue)] capitalize'>
                   <Shirt size={16} className='text-[var(--royalblue)]' />
                   cart
                 </Link>
@@ -730,7 +730,9 @@ const Nav = () => {
       >
         <div className="container flex justify-center">
           <div className='w-[50%] flex flex-col gap-[10px] pt-[30px] pb-[50px] px-[30px] text-sm'>
-            <Link to='/cart' className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
+            <Link
+              onClick={clickedCartLink}
+              className='group flex items-center justify-between border-b-[0.1px] border-white transition-colors duration-500 ease-in-out'>
               <div className='flex items-center gap-[5px]'>
                 <Shirt className='text-[var(--royalblue)] transition-colors duration-500 ease-in-out' size={18} />
                 <span className='text-white py-[15px] capitalize group-hover:text-[var(--royalblue)] transition-colors duration-500 ease-in-out'>cart</span>
@@ -785,22 +787,22 @@ const Nav = () => {
                         <h3 className='text-[16px] font-semibold capitalize'>{item.name}</h3>
                         <span className="text-sm text-gray-700">$ {item.price} USD</span>
 
-                        <button 
-                        /* use the arrow function to pass it since it has an arguement */
-                        onClick={() => removeFromCart(item.id)}
-                        className="text-sm text-[var(--royalblue)] mt-[10px] text-white bg-red-500 text-center py-[10px] px-[20px] rounded-[25px] w-fit hover:bg-red-700 cursor-pointer hover:-translate-y-1 transition-all ease-in-out duration-300"
+                        <button
+                          /* use the arrow function to pass it since it has an arguement */
+                          onClick={() => removeFromCart(item.id)}
+                          className="text-sm text-[var(--royalblue)] mt-[10px] text-white bg-red-500 text-center py-[10px] px-[20px] rounded-[25px] w-fit hover:bg-red-700 cursor-pointer hover:-translate-y-1 transition-all ease-in-out duration-300"
                         >Remove
                         </button>
                       </div>
                     </div>
 
                     <div className="rounded-[25px] p-[3px] border-[0.1px] border-gray-500 w-[100px]">
-                      <input 
-                      type="number" 
-                      name="" id="" 
-                      defaultValue={item.quantity} 
-                      onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
-                      className='w-full h-full outline-none px-[10px] py-[3px]' />
+                      <input
+                        type="number"
+                        name="" id=""
+                        defaultValue={item.quantity}
+                        onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
+                        className='w-full h-full outline-none px-[10px] py-[3px]' />
                     </div>
 
                   </div>
@@ -812,6 +814,10 @@ const Nav = () => {
                 </div>
                 <button
                   type='button'
+                  onClick={() => {
+                    notClickedCartLink();
+                    navigate('/checkout');
+                  }}
                   className='w-[90%] self-center flex items-center justify-center capitalize text-white border-[0.1px] border-[var(--royalblue)] outline-none bg-[var(--royalblue)] py-[12px] rounded-[25px] text-sm transition duration-500 ease hover:-translate-y-1 cursor-pointer hover:bg-[var(--royalblue-hover)] font-semibold'
                 >
                   continue to checkout

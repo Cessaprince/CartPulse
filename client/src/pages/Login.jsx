@@ -6,10 +6,12 @@ import { useState } from 'react'
 import iziToast from 'izitoast'
 import 'izitoast/dist/css/iziToast.min.css'
 import shoppingCart from '../images/page-images/shoppingCart.jpg'
+import { ShoppingBag } from 'lucide-react'
 
 //for the firebase authentication
 import { auth } from '../firebase'
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+
 
 const Login = () => {
 
@@ -120,11 +122,14 @@ const Login = () => {
 
             <section className='w-[900px] flex h-[450px] bg-white shadow border-[0.1px] border-gray-200 rounded-[15px]'>
                 <div className="w-[50%] overflow-hidden rounded-l-[15px] max-md:hidden">
-                    <img src={shoppingCart} alt="" className='w-full h-full object-cover'/>
+                    <img src={shoppingCart} alt="" className='w-full h-full object-cover' />
 
                 </div>
                 <form action="" className='w-[50%] max-md:w-full flex flex-col gap-[15px] p-[40px]'>
-                    <h1 className='font-bold text-[22px] text-center'>Login</h1>
+                    <h1 className='font-bold text-[22px] text-center flex justify-center items-center gap-[5px]'>
+                        <ShoppingBag className='text-[var(--royalblue)] hidden max-md:block' size={25} />
+                        Login
+                    </h1>
                     <input
                         type="email"
                         placeholder='Email Address'

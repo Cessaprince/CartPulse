@@ -77,8 +77,13 @@ export const CartProvider = ({ children }) => {
         );
     };
 
+    //empties the entire cart, used after a successful payment or on logout
+    const clearCart = () => {
+        setCartItems([]);
+    };
+
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, updateQuantity, removeFromCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, updateQuantity, removeFromCart, clearCart }}>
             {children}
         </CartContext.Provider>
     )

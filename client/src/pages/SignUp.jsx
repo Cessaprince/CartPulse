@@ -1,7 +1,7 @@
 //all the imports
 
 import React from 'react'
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, ShoppingBag } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import googleLogo from '../images/page-images/google-logo.png'
@@ -175,8 +175,10 @@ const SignUp = () => {
                 </div>
 
                 <form action="" className='w-[50%] max-md:w-full flex flex-col gap-[15px] p-[40px]'>
-                    <h1 className='font-bold text-[22px] text-center'>SignUp</h1>
-
+                    <h1 className='font-bold text-[22px] text-center flex justify-center items-center gap-[5px] capitalize'>
+                        <ShoppingBag className='text-[var(--royalblue)] max-md:block hidden' size={25} />
+                        signup
+                    </h1>
                     <input
                         type="text"
                         placeholder='Username'

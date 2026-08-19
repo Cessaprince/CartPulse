@@ -80,9 +80,9 @@ const ProductDetails = () => {
       {/* product details section*/}
       <section className="py-[30px]">
         <div className="container">
-          <div className="flex justify-center items-start h-auto gap-[30px]">
+          <div className="flex max-md:flex-col justify-center items-start h-auto gap-[30px]">
             {/* product image */}
-            <div className="w-[60%] h-[500px] rounded-[15px] overflow-hidden">
+            <div className="w-[60%] max-md:w-full h-[500px] rounded-[15px] overflow-hidden">
               <img src={product.image} alt="" className='object-cover w-full h-full' />
             </div>
 
@@ -94,7 +94,7 @@ const ProductDetails = () => {
 
               {/* box with description*/}
               <div className="flex flex-col gap-[7px] pb-[30px] border-b-[0.1px] border-b-gray-400">
-                <h3 className="text-[22px] font-semibold ">{product.name}</h3>
+                <h3 className="text-[22px] font-semibold capitalize">{product.name}</h3>
                 <span className="text-gray-500 text-[13px]">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quidem molestias ad asperiores error enim pariatur deserunt impedit molestiae velit!
                 </span>
@@ -129,7 +129,7 @@ const ProductDetails = () => {
       {/* product information section*/}
       <section className="py-[70px]">
         <div className="container pb-[60px] border-b-[0.1px] border-b-gray-400 ">
-          <div className="flex flex-col gap-[50px] w-[60%]">
+          <div className="flex max-md:w-full flex-col gap-[50px] w-[60%]">
             <div className="flex flex-col gap-[15px]">
               <h3 className="text-[30px] capitalize">product information</h3>
               <span className="text-gray-500 text-[16px] leading-[25px]">
