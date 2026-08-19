@@ -15,7 +15,7 @@ const Footer = () => {
             <section className='bg-[var(--navyblue-grayish)] py-[15px]'>
                 <div className="container">
 
-                    <div className="flex max-md:flex-wrap justify-between items-center gap-[30px] text-[var(--white)] py-[50px] border-b-[0.1px] border-gray-500">
+                    <div data-aos="fade-up" className="flex max-md:flex-wrap justify-between items-center gap-[30px] text-[var(--white)] py-[50px] border-b-[0.1px] border-gray-500">
                         <div className="flex flex-col gap-[30px]">
                             <h3 className='font-bold text-sm capitalize'>quick links</h3>
                             <div className="flex flex-col gap-[15px]">

@@ -14,7 +14,7 @@ const Shop = () => {
             <Nav />
             <section className='bg-gray-100 py-[22px]'>
                 <div className="container">
-                    <div className="flex gap-[7px] items-center">
+                    <div data-aos="fade-up" className="flex gap-[7px] items-center">
                         <NavLink to='/'
                             className={
                                 ({ isActive }) =>
@@ -39,7 +39,7 @@ const Shop = () => {
 
             <section className='py-[30px]'>
                 <div className="container ">
-                    <div className="w-full bg-gray-50 flex rounded-[15px]">
+                    <div data-aos="fade-up" className="w-full bg-gray-50 flex rounded-[15px]">
                         <div className="flex flex-col mx-auto items-center gap-[7px] py-[80px]">
                             <h3 className='capitalize text-[30px]'>shop</h3>
                             <span className='font-100 text-gray-500 text-[16px] w-[60%] text-center max-md:w-[80%]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </span>
@@ -53,7 +53,7 @@ const Shop = () => {
 
             <section className="py-[30px]">
                 <div className="container">
-                    <div className="w-full">
+                    <div data-aos="fade-up" className="w-full">
 
                         <div className="flex max-md:flex-col gap-[100px] items-stretch pb-[120px] border-b-[0.1px] border-gray-300">
                             {/* box at the left*/}

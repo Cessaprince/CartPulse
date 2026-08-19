@@ -11,7 +11,7 @@ const Contact = () => {
 
             <section className='py-[50px] bg-gradient-to-b from-white from-50% to-gray-50 to-50%'>
                 <div className="container">
-                    <div className="w-full flex max-md:w-full">
+                    <div data-aos="fade-up"  className="w-full flex max-md:w-full">
                         <div className="flex flex-col mx-auto items-center py-[50px] max-md:w-full">
                             <h3 className='capitalize text-[45px] max-md:text-[30px]'>contact us</h3>
                             <span className='font-thin text-gray-500 text-[16px] w-[60%] text-center max-md:w-[80%] max-md:text-[13px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </span>
@@ -124,7 +124,7 @@ const Contact = () => {
             </section>
 
             <section className="py-[120px]">
-                <div className="container flex flex-col gap-[50px]">
+                <div data-aos="fade-up" className="container flex flex-col gap-[50px]">
                     <div className='mx-auto flex flex-col items-center gap-[15px]'>
                         <h3 className='capitalize text-[36px] max-md:text-[24px]'>frequently asked questions</h3>
                         <span className='font-thin text-gray-500 text-[16px] w-[60%] text-center max-md:w-[80%] max-md:text-[13px]'>

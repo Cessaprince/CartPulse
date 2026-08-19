@@ -12,7 +12,20 @@ import ProductDetails from './pages/ProductDetails'
 import ScrollToTop from './components/ScrollToTop'
 import Checkout from './pages/Checkout'
 
+
+//the imports for animate on scroll
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const App = () => {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,  
+      once: true,    // this is for if elements animate only the first time they scroll into view
+    });
+  }, []);
   return (
 
     <div>

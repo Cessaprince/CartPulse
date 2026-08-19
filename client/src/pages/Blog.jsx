@@ -22,7 +22,7 @@ const Blog = () => {
 
                 <div className="container">
 
-                    <div className="w-full flex justify-between items-center py-[30px] max-md:flex-col max-md:gap-[10px]">
+                    <div data-aos="fade-up"  className="w-full flex justify-between items-center py-[30px] max-md:flex-col max-md:gap-[10px]">
                         <h3 className='capitalize text-[45px] max-md:text-[30px]'>our blog</h3>
 
                         {/* search button */}
@@ -40,7 +40,7 @@ const Blog = () => {
                     </div>
 
                     {/* cloth area*/}
-                    <div className="w-full flex items-center gap-[40px] relative py-[30px] max-md:flex-col max-md:gap-[100px]">
+                    <div data-aos="fade-up"  className="w-full flex items-center gap-[40px] relative py-[30px] max-md:flex-col max-md:gap-[100px]">
                         {/* left side */}
 
                         <div className="flex flex-col w-[50%] relative group cursor-pointer max-md:w-full">
@@ -124,7 +124,7 @@ const Blog = () => {
 
 
             <section className='py-[100px] max-md:py-[30px]'>
-                <div className="container border-b-[0.1px] border-gray-200 py-[100px]">
+                <div data-aos="fade-up"  className="container border-b-[0.1px] border-gray-200 py-[100px]">
 
                     <div className="w-full flex gap-[150px] items-stretch max-md:flex-col">
                         {/* left */}

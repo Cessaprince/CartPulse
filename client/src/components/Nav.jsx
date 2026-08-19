@@ -754,7 +754,7 @@ const Nav = () => {
       {/* Cart Modal */}
       {isClicked && (
         <div
-          className='fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm px-[15px]'
+          className='fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-[15px]'
           onClick={notClickedCartLink}
         >
           <div

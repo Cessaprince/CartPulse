@@ -75,7 +75,7 @@ const Home = () => {
             <section className='py-[50px] max-md:pt-[50px] max-md:pb-[0px]'>
                 <div className="container flex flex-col gap-[5px] max-md:gap-[30px]">
 
-                    <div className="max-md:contents max-md:items-center max-md:h-[50vh] flex items-stretch gap-[30px] pb-[50px]">
+                    <div data-aos="fade-up" className="max-md:contents max-md:items-center max-md:h-[50vh] flex items-stretch gap-[30px] pb-[50px]">
 
                         {/* box at the left */}
                         <div className='max-md:order-3 max-md:w-full p-[22px] border-[0.1px] border-gray-300 flex flex-col gap-[10px] w-[330px] rounded-[18px]'>
@@ -178,14 +178,14 @@ const Home = () => {
 
             <section className='py-[70px]'>
                 <div className="container">
-                    <div className="flex justify-between items-center gap-[10px] py-[20px]">
+                    <div data-aos="fade-up" className="flex justify-between items-center gap-[10px] py-[20px]">
                         <h3 className='text-[25px] max-md:text-[16px]'>Latest products</h3>
                         <Link to='' className='flex justify-center items-center font-light w-fit whitespace-nowrap border-[0.1px] outline-none py-[15px] px-[25px] max-md:py-[8px] max-md:px-[12px] rounded-[25px] text-sm max-md:text-[10px] transition duration-500 ease border-gray-200 hover:border-[var(--royalblue)] hover:-translate-y-1 hover:text-[var(--royalblue)] cursor-pointer'>Explore products</Link>
                     </div>
 
 
                     {/* latest products and using the products variable name and mapping it*/}
-                    <div className="grid grid-cols-4 max-md:grid-cols-2 gap-[40px] max-md:gap-[25px] py-[10px]">
+                    <div data-aos="fade-up" className="grid grid-cols-4 max-md:grid-cols-2 gap-[40px] max-md:gap-[25px] py-[10px]">
 
                         {products.map((product) => (
                             <div
@@ -218,7 +218,7 @@ const Home = () => {
             {/* graycoat area */}
             <section className="py-[50px]">
                 <div className="container">
-                    <div className="w-full flex justify-between bg-gray-100 rounded-[10px] p-[100px] max-md:py-[70px] max-md:px-[50px] relative">
+                    <div data-aos="fade-up" className="w-full flex justify-between bg-gray-100 rounded-[10px] p-[100px] max-md:py-[70px] max-md:px-[50px] relative">
                         {/* graycoat and text area*/}
                         <div className="flex flex-col w-[50%] max-md:w-[60%] gap-[25px]">
 
@@ -249,14 +249,14 @@ const Home = () => {
             {/* horizontal scroll of products*/}
             <section className='py-[70px]'>
                 <div className="container">
-                    <div className="flex justify-between items-center gap-[10px] py-[20px]">
+                    <div data-aos="fade-up" className="flex justify-between items-center gap-[10px] py-[20px]">
                         <h3 className='text-[25px] max-md:text-[16px]'>Popular products</h3>
                         <Link to='' className='flex justify-center items-center font-light w-fit whitespace-nowrap border-[0.1px] outline-none py-[15px] px-[25px] max-md:py-[8px] max-md:px-[12px] rounded-[25px] text-sm max-md:text-[10px] transition duration-500 ease border-gray-200 hover:border-[var(--royalblue)] hover:-translate-y-1 hover:text-[var(--royalblue)] cursor-pointer'>Explore popular products</Link>
                     </div>
 
                     {/* latest products (mapping the product) */}
 
-                    <div className="w-full overflow-x-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                    <div data-aos="fade-up" className="w-full overflow-x-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                         <div className="flex items-stretch gap-[40px] py-[10px]">
 
                             {products.slice(0, 6).map((product) => (
@@ -290,7 +290,7 @@ const Home = () => {
 
             <section className="py-[40px] max-md:w-full">
                 <div className="container flex pb-[100px] border-b-[0.1px] border-gray-300 max-md:w-full">
-                    <div className="mx-auto flex flex-col gap-[40px] items-center">
+                    <div data-aos="fade-up" className="mx-auto flex flex-col gap-[40px] items-center">
                         <h3 className='text-[25px] max-md:text-[22px]'>Top categories this month</h3>
                         <div className="flex gap-[50px] justify-between items-center max-md:w-full">
                             <div className="flex flex-col gap-[10px] items-center group cursor-pointer max-md:w-[33%]">
@@ -320,7 +320,7 @@ const Home = () => {
 
             <section className="py-[100px]">
                 <div className="container">
-                    <div className="grid grid-cols-3 gap-[40px] max-md:grid-cols-1 ">
+                    <div data-aos="fade-up" className="grid grid-cols-3 gap-[40px] max-md:grid-cols-1 ">
                         {/* each table*/}
 
                         <div className="flex flex-col gap-[40px] max-md:w-full">
@@ -493,7 +493,7 @@ const Home = () => {
 
                                 </div>
 
-                                <div onClick={() => navigate('/shop/product/pink-sweater')}  data-id='pink-sweater' className="flex gap-[15px] items-center group cursor-pointer">
+                                <div onClick={() => navigate('/shop/product/pink-sweater')} data-id='pink-sweater' className="flex gap-[15px] items-center group cursor-pointer">
                                     <div className="w-[100px] h-[100px] rounded-[10px] overflow-hidden transition-transform duration-300 group-hover:scale-105">
                                         <img src={pinkSweater} alt="" />
                                     </div>
@@ -516,7 +516,7 @@ const Home = () => {
 
             <section className='bg-gray-50 py-[80px] max-md:py-[40px]'>
                 <div className="container flex">
-                    <div className="mx-auto flex p-[50px] max-md:p-[20px] justify-evenly gap-[30px] max-md:gap-[10px] border-[0.1px] border-gray-200 bg-[var(--white)] rounded-[10px] max-md:w-full max-md:flex-col">
+                    <div data-aos="fade-up" className="mx-auto flex p-[50px] max-md:p-[20px] justify-evenly gap-[30px] max-md:gap-[10px] border-[0.1px] border-gray-200 bg-[var(--white)] rounded-[10px] max-md:w-full max-md:flex-col">
 
                         {/* each icon*/}
                         <div className="px-[20px] border-r border-r-[0.10px] border-gray-300 max-md:border-none flex items-center gap-[15px]">

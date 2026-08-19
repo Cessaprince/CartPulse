@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Discount = ({ stackOnMobile = true }) => {
     return (
-        <div className='w-full'>
+        <div data-aos="fade-up" className='w-full'>
             <div className={`grid ${stackOnMobile ? 'grid-cols-2 max-md:grid-cols-1' : 'grid-cols-2'} gap-[30px] w-full max-md:gap-[20px]`}>
                 <div className='h-[400px] rounded-[15px]' id='flower-vase'>
                     <div className="flex flex-col gap-[10px] w-[70%] p-[30px] max-md:w-[100%]">
