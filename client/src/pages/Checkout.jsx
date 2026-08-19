@@ -75,7 +75,7 @@ const Checkout = () => {
                         {/* account details*/}
                         <div className="flex flex-col gap-[15px] pl-[100px] pr-[20px] pb-[50px] max-md:px-[60px] border-b-gray-300 border-b-[0.1px]">
                             <h3 className="text-[18px] capitalize font-semibold">1. account details</h3>
-                            <div className="flex items-center gap-[20px] w-full">
+                            <div className="flex max-md:flex-col items-center gap-[20px] w-full">
                                 <div className="flex flex-col w-full gap-[5px]">
                                     <span className='text-gray-600 text-sm capitalize'>email ID</span>
                                     <input
