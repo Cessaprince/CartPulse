@@ -177,14 +177,14 @@ const Checkout = () => {
 
                                 {/* one block per item in the cart, instead of one hardcoded item */}
                                 {cartItems.map((item) => (
-                                    <div key={item.id} className="px-[25px] flex justify-between items-start w-full border-b-[0.1px] border-gray-300 pb-[30px]">
+                                    <div key={item.id} className="px-[25px] flex max-md:gap-[10px] justify-between items-start w-full border-b-[0.1px] border-gray-300 pb-[30px]">
                                         {/* image and name*/}
-                                        <div className="flex items-start gap-[15px]">
+                                        <div className="flex max-md:flex-col items-start gap-[15px]">
                                             <div className="w-[100px] h-[100px] border-[0.1px] rounded-[15px] border-gray-500 overflow-hidden hover:border-[var(--royalblue)] hover:border-[1px] transition-colors ease-in-out cursor-pointer">
                                                 <img src={item.image} alt="" />
                                             </div>
                                             {/* text */}
-                                            <div className="flex flex-col">
+                                            <div className=" flex flex-col ">
                                                 <h3 className='text-[16px] font-semibold capitalize'>{item.name}</h3>
                                                 <span className="text-sm text-gray-700">$ {item.price} USD</span>
 
