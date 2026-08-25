@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     }, []) // [] is to run this function once
 
     return (
-        <AuthContext.Provider value={{ user }}>
+        <AuthContext.Provider value={{ user }}> {/*the value second braces shows that it is an object iof those functions*/}
             {children}
         </AuthContext.Provider>
     )
