@@ -25,10 +25,11 @@ export const CartProvider = ({ children }) => {
         }
     }, [user]);
 
-    //takes one param: the product being added (no quantity yet, it's fresh from the page)
+    //takes one paramteer: the product being added (no quantity yet, it's fresh from the page)
     const addToCart = (product) => {
 
         /* setCartitems to have the function that checks if the item is in cart or not*/
+        //use the prev keyword to check the previous and add if it already exists
         setCartItems((prevItems) => {
 
             /* does this product already exist in the cart?
